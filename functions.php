@@ -1,234 +1,151 @@
 <?php
+if(!class_exists('wCore')) {
 
-	if(!class_exists('wCore')) {
+	class wCore{
 
-		class wCore{
+		static function get_dir($dirname, $all = true,  $location = false){
+			$location = ($location == false ? $location = dirname(__FILE__) : $location);
+			$dirnames = glob($location . '/'. $dirname .'/*.php');
 
-			public function __construct(){
-				add_action('admin_menu', array(&$this, 'create_pages'));
-				add_filter( 'post_thumbnail_html', array(&$this, 'attachment_thumbnail'), 10, 5);
-				add_action('admin_init', array(&$this, 'register_settings') );
-				$this->init();
+			foreach ($dirnames as $filename) {
+						$adds = explode("/", $filename);
+					include $filename;
 			}
+		}
 
-			public function init(){
-				$this->generate_constans();
-				$this->get_dir('class');
-				$this->get_addon('addons');
-				add_action( 'plugins_loaded', array(&$this, 'setup_languages' ));
+		static function get_addon($dirname, $folders = true, $location = false){
+			$location = ($location == false ? $location = dirname(__FILE__) : $location);
+			$dirnames = glob($location . '/'. $dirname .'/*.php');
 
-			}
-
-			public function setup_languages(){
-
-				load_plugin_textdomain( 'webcreatives-core', false, wCorePath.'/languages/' );
-			}
-
-			function generate_constans(){
-				$file = __FILE__;
-				$plugin_url = plugin_dir_url($file);
-				$plugin_path = plugin_dir_path($file);
-
-				define("wCorePath", $plugin_path);
-				define("wCoreUrl", $plugin_url);
-
-			}
-
-		    public static function activate(){
-				global $wpdb;
-
-				$charset_collate = $wpdb->get_charset_collate();
-				$table_name = $wpdb->prefix . "gallery_relations";
-
-				$sql = "CREATE TABLE  IF NOT EXISTS $table_name (
-				  id mediumint(9) NOT NULL AUTO_INCREMENT,
-				  sliderID int(5) NOT NULL,
-				  objectID int(5) NOT NULL,
-				  list_order int(3) NOT NULL,
-				  PRIMARY KEY (id),
-				  UNIQUE KEY id (sliderID, objectID)
-				) $charset_collate;";
-
-				require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-				dbDelta( $sql );
-		    } // END public static function activate
-
-		    /**
-		     * Deactivate the plugin
-		     */
-		    public static function deactivate(){
-		        // Do nothing
-		    } // END public static function deactivate
-
-			static function get_dir($dirname, $all = true,  $location = false){
-				$location = ($location == false ? $location = dirname(__FILE__) : $location);
-				$dirnames = glob($location . '/'. $dirname .'/*.php');
-
+			if (is_array($dirnames)){
 				foreach ($dirnames as $filename) {
-					    $adds = explode("/", $filename);
+							$adds = explode("/", $filename);
 						include $filename;
 				}
 			}
 
-			static function get_addon($dirname, $folders = true, $location = false){
-				$location = ($location == false ? $location = dirname(__FILE__) : $location);
-				$dirnames = glob($location . '/'. $dirname .'/*.php');
 
-				if (is_array($dirnames)){
-					foreach ($dirnames as $filename) {
-						    $adds = explode("/", $filename);
-							include $filename;
-					}
-				}
-
-
-				if ($folders == true){
-					$dirnames = glob(dirname(__FILE__) . '/'. $dirname . '/*', GLOB_ONLYDIR);
-					foreach ($dirnames as $filename) {
-						    $adds = explode("/", $filename);
-							include $filename . '/' . end($adds) . '.php';
-					}
+			if ($folders == true){
+				$dirnames = glob(dirname(__FILE__) . '/'. $dirname . '/*', GLOB_ONLYDIR);
+				foreach ($dirnames as $filename) {
+							$adds = explode("/", $filename);
+						include $filename . '/' . end($adds) . '.php';
 				}
 			}
+		}
 
-			function logout_url(){
-			  wp_redirect( home_url() );
-			  exit();
+		function logout_url(){
+			wp_redirect( home_url() );
+			exit();
+		}
+
+	} //End wCore Class
+}
+
+if(!class_exists('ThemeFramework')) {
+
+	class ThemeFramework{
+
+		public function __construct(){
+			add_action( 'init', array(&$this, 'images_setup' ));
+			add_action( 'init', array(&$this, 'nav_menus_setup' ));
+			add_action('admin_menu', array(&$this, 'create_pages'));
+			add_action('admin_init', array(&$this, 'register_settings') );
+			add_filter( 'wp_nav_menu_items', array(&$this, 'loginout_menu_link'), 10, 2 );
+			add_action( 'pre_get_posts', array(&$this, 'polylang_search_normalize' ));
+			add_action( 'pre_get_posts', array(&$this, 'gallery_posts_per_page' ));
+			add_action( 'after_setup_theme', array(&$this, 'set_languages' ));
+			add_filter( 'logout_url', array(&$this, 'logout_url'), 10, 2 );
+
+			$this->init();
+		}
+
+		public function init(){
+			if (class_exists("wCore")){
+				wCore::get_dir('class', false, dirname(__FILE__));
+				wCore::get_dir('post-types', false, dirname(__FILE__));
+				wCore::get_dir('widgets', false, dirname(__FILE__));
 			}
 
-		} //End wCore Class
+		}
+
+		function set_languages(){
+		    load_theme_textdomain( 'blackcrystal', get_template_directory() . '/languages' );
+		}
+
+		public function logout_url($logout_url, $redirect){
+			return $logout_url . '&redirect_to=' . home_url();
+		}
+
+		public function create_pages(){
+			add_menu_page('Téma beállítások', 'Téma beállítások', 'administrator', __FILE__, array(&$this, 'theme_settings_page'),'dashicons-welcome-view-site', 998);
+		}
+
+		public function theme_settings_page(){
+			include(sprintf("%s/admin-templates/theme-options.php", dirname(__FILE__)));
+		}
+
+		public function register_settings(){
+			register_setting('theme-group', 'page_video');
+			register_setting('theme-group', 'page_kontakt');
+			register_setting('theme-group', 'page_sale');
+			register_setting('theme-group', 'page_gift');
+			register_setting('theme-group', 'page_actuality');
+			register_setting('theme-group', 'page_subtitle');
+			register_setting('theme-group', 'page_shipping');
+			register_setting('theme-group', 'callback_form');
+			register_setting('theme-group', 'writeus_form');
+			register_setting('theme-group', 'kh_logo');
+			register_setting('theme-group', 'video_form');
+			register_setting('theme-group', 'google_analytics');
+		}
+
+		public function images_setup(){
+			add_theme_support( 'wc-product-gallery-zoom' );
+			add_theme_support( 'wc-product-gallery-lightbox' );
+			add_theme_support( 'wc-product-gallery-slider' );
+			add_theme_support( 'post-thumbnails' );
+
+			//Add image sizes
+			add_image_size( 'home-gallery-thumb', 520, 300, true );
+			add_image_size( 'gallery-thumb', 290, 220, true );
+		}
+
+		public function nav_menus_setup() {
+			register_nav_menu( 'top-menu', __( 'Top menu', 'blackcrystal' ) );
+			register_nav_menu( 'header-menu', __( 'Header menu', 'blackcrystal' ) );
+			register_nav_menu( 'header-nav-menu', __( 'Header nav menu', 'blackcrystal' ) );
+		}
+
+
+
+		function loginout_menu_link( $items, $args ) {
+		   if ($args->theme_location == 'header-menu') {
+		      if (is_user_logged_in()) {
+		         $items .= '<li class=""><a href="'. get_the_permalink(woocommerce_get_page_id('myaccount')) .'">'.__('My Account', 'blackcrystal').'</a></li>';
+		         $items .= '<li class=""><a href="'. wp_logout_url(home_url()) .'">'.__('Logout', 'blackcrystal').'</a></li>';
+		      } else {
+		         $items .= '<li class=""><a href="'. get_the_permalink(woocommerce_get_page_id('myaccount')) .'?action=login">'.__('Log in', 'blackcrystal').'</a></li>';
+		         $items .= '<li class=""><a href="'. get_the_permalink(woocommerce_get_page_id('myaccount')) .'">'.__('Register', 'blackcrystal').'</a></li>';
+		         $items .= '<li class=""><a href="'. wp_lostpassword_url() .'">'.__('Lost Password', 'blackcrystal').'</a></li>';
+		      }
+		   }
+		   return $items;
+		}
+
+		function polylang_search_normalize( $query ) {
+		    if ( $query->is_search()) {
+		        $query->query_vars['tax_query'] = array();
+		    }
+		}
+
+		function gallery_posts_per_page( $query ) {
+		   if( !is_admin() && $query->is_main_query() && is_post_type_archive( 'gallery' ) ) {
+		        $query->set( 'posts_per_page', '-1' );
+		    }
+		}
+
 	}
+}
 
-	if(class_exists('wCore')){
-		// instantiate the plugin class
-	$wCore = new wCore();
-	}
-
-	if(!class_exists('THEME_LOADER')) {
-
-	    class THEME_LOADER {
-
-		    public function __construct(){
-		    	add_action( 'wp_enqueue_scripts', array(&$this, 'front_scripts' ));
-		    	add_action( 'wp_enqueue_scripts', array(&$this, 'register_scripts' ));
-		    	add_action( 'admin_enqueue_scripts', array(&$this, 'admin_scripts' ));
-		    	add_action( 'wp_enqueue_scripts', array(&$this, 'woocommerce_scripts_cleaner'), 99 );
-		    }
-
-		    function register_scripts(){
-
-
-		    }
-
-		    function register_styles(){
-		    	//wp_register_style( $handle, $src, $deps, $ver, $media );
-		    }
-
-		    function load_core_scripts(){
-
-		    }
-
-		    function admin_scripts(){
-			    wp_enqueue_media();
-		    }
-
-		    function front_scripts(){
-
-		    	//Styles
-				wp_enqueue_style( 'bootstrap.modal', get_template_directory_uri() . '/css/bootstrap.css', array(), false, '');
-				wp_enqueue_style( 'font-awesome');
-				wp_enqueue_style( 'wyswyg');
-				wp_enqueue_style( 'woocommerce', get_template_directory_uri() . '/css/woocommerce.css', array(), false, '');
-				wp_enqueue_style( 'woocommerce-layout', get_template_directory_uri() . '/css/woocommerce-layout.css', array(), false, '');
-				wp_enqueue_style( 'woocommerce-smallscreen', get_template_directory_uri() . '/css/woocommerce-smallscreen.css', array(), false, 'only screen and (max-width: 768px)');
-				wp_enqueue_style( 'animate', get_template_directory_uri() . '/css/animate.css', array(), false, '');
-				wp_enqueue_style( 'swipebox.min', get_template_directory_uri() . '/css/swipebox.min.css', array(), false, '');
-				wp_enqueue_style( 'extra_style', get_template_directory_uri() . '/css/extra_style.css', array(), false, '');
-				wp_enqueue_style( 'grid_1170', get_template_directory_uri() . '/css/grid_1170.css', array(), false, '');
-				wp_enqueue_style( 'styles', get_template_directory_uri() . '/css/styles.css', array(), false, '');
-				wp_enqueue_style( 'superfish', get_template_directory_uri() . '/css/superfish.css', array(), false, '');
-				wp_enqueue_style( 'camera', get_template_directory_uri() . '/css/camera.css', array(), false, '');
-				wp_enqueue_style( 'style-name', get_stylesheet_uri() );
-				wp_enqueue_style( 'responsive', get_template_directory_uri() . '/css/responsive.css', array(), false, '');
-
-				//wp_enqueue_style( 'sample', get_template_directory_uri() . '/css/sample.css', array(), false, '');
-
-
-
-			   //Scripts
-			   wp_enqueue_script( 'jquery');
-			   wp_enqueue_script( 'jquery-ui-tooltip');
-
-			   wp_enqueue_script( 'jquery-cookie');
-
-			   wp_enqueue_script( 'jquery.isotope', get_template_directory_uri() . '/js/jquery.isotope.js', array('jquery'), '1.0.0', true );
-
-			   wp_enqueue_script( 'jquery.swipebox.min', get_template_directory_uri() . '/js/jquery.swipebox.min.js', array('jquery'), '1.0.0', true );
-			   wp_enqueue_script( 'j-carousel', get_template_directory_uri() . '/js/j-carousel.js', array('jquery'), '1.0.0', true );
-			   wp_enqueue_script( 'jquery.easing.1.3', get_template_directory_uri() . '/js/jquery.easing.1.3.js', array('jquery'), '1.0.0', true );
-			   wp_enqueue_script( 'superfish', get_template_directory_uri() . '/js/superfish.js', array('jquery'), '1.0.0', true );
-			   wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0', true );
-				wp_localize_script(
-					'scripts', 'texts',
-					array(
-						'not_enough' => __('Díszdoboz csak teljes készlethez érhető el', 'blackcrystal'),
-						'low_order_amount_title' => __("Checkout error", 'blackcrystal'),
-						'low_order_amount' => sprintf( __('You must have an order with a minimum of %s to place your order, your current order total is %s.', 'blackcrystal') ,
-		                    	wc_price( get_option('minimum_amount') ),
-								wc_price( WC()->cart->cart_contents_total
-							)
-						),
-					)
-				);
-			   wp_enqueue_script( 'camera', get_template_directory_uri() . '/js/camera.js', array('jquery'), '1.0.0', true );
-
-			   //wp_enqueue_script( 'init', get_template_directory_uri() . '/js/init.js', array('jquery'), '1.0.0', true );
-		    }
-
-			function woocommerce_scripts_cleaner() {
-
-				// Remove the generator tag
-				remove_action( 'wp_head', array( $GLOBALS['woocommerce'], 'generator' ) );
-				// Unless we're in the store, remove all the cruft!
-
-				if ( ! is_woocommerce() && ! is_cart() && ! is_checkout() ) {
-					wp_dequeue_style( 'woocommerce_frontend_styles' );
-					wp_dequeue_style( 'woocommerce-general');
-					wp_dequeue_style( 'woocommerce-layout' );
-					wp_dequeue_style( 'woocommerce-smallscreen' );
-					wp_dequeue_style( 'woocommerce_fancybox_styles' );
-					wp_dequeue_style( 'woocommerce_chosen_styles' );
-					wp_dequeue_style( 'woocommerce_prettyPhoto_css' );
-					wp_dequeue_style( 'select2' );
-					wp_dequeue_script( 'wc-add-payment-method' );
-					wp_dequeue_script( 'wc-lost-password' );
-					wp_dequeue_script( 'wc_price_slider' );
-					wp_dequeue_script( 'wc-single-product' );
-					wp_dequeue_script( 'wc-add-to-cart' );
-					wp_dequeue_script( 'wc-cart-fragments' );
-					wp_dequeue_script( 'wc-credit-card-form' );
-					wp_dequeue_script( 'wc-add-to-cart-variation' );
-					wp_dequeue_script( 'wc-single-product' );
-					wp_dequeue_script( 'wc-cart' );
-					wp_dequeue_script( 'wc-chosen' );
-					wp_dequeue_script( 'woocommerce' );
-					wp_dequeue_script( 'prettyPhoto' );
-					wp_dequeue_script( 'prettyPhoto-init' );
-					wp_dequeue_script( 'jquery-blockui' );
-					wp_dequeue_script( 'jquery-placeholder' );
-					wp_dequeue_script( 'jquery-payment' );
-					wp_dequeue_script( 'fancybox' );
-					wp_dequeue_script( 'jqueryui' );
-
-				}
-				wp_deregister_script( 'wc-checkout' );
-				wp_register_script( 'wc-checkout',get_template_directory_uri() . '/js/wc-checkout.js', array('jquery'), '1.0.0', true );
-			}
-
-	    }
-	}
-
-	if (class_exists('THEME_LOADER')){
-		$THEME_LOADER = new THEME_LOADER();
-	}
-?>
+$ThemeFramework = new ThemeFramework();
