@@ -5,40 +5,7 @@
 						<div class="footer">
 							<p id="back-top"><a href="#top"><span></span></a> </p>
 							<div class="footer-cols-wrapper">
-								<div id="our_products" class="footer-col">
-									<h4>Termékeinkről...</h4>
-									<div class="footer-col-content">
-										<?php 
-											$args = array(
-												'post_type' => array('page'),										
-												'meta_query' => array(
-													array(
-														'key'     => '_yoast_wpseo_focuskw',
-														'value'   => "",
-														'compare' => '!=',
-													),
-												),			
-												'orderby' => 'rand',
-												'posts_per_page' => 5							
-											);
-										
-											$docs = new WP_Query($args);
-										?>
-										<?php if ($docs->have_posts()): ?>
-											<div id="products-informations" class="box-collateral box-up-sell">
-												<ul class="products-information-list">
-													<?php while ($docs->have_posts()): $docs->the_post(); ?>
-														<li class="products-information-item">
-															<a href="<?php the_permalink()?>"><h3><?php the_title()?></h3></a>
-															<?php the_post_thumbnail('medium_large'); ?>
-														</li>
-													<?php endwhile;?>
-												</ul>
-											</div>
-										<?php endif; ?>									
-									</div>
-								</div>
-								<?php dynamic_sidebar('footer_sidebar')?>							
+								<?php dynamic_sidebar('footer_sidebar')?>
 							</div>
 						</div>
 					</div>
@@ -79,14 +46,13 @@
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->	
+	</div><!-- /.modal -->
 <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'/>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <?/*************** analytics code ****************/?>
 <?php echo get_option('google_analytics')?>
 
-<?php wp_footer(); ?>	
+<?php wp_footer(); ?>
 </body>
 </html>
-
