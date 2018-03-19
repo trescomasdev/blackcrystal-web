@@ -1,16 +1,16 @@
 /*
-Theme Name: Blackcrystal 2016
+Theme Name: Blackcrystal web
 Theme URI: http://www.webcreatives.hu
 Version: 1.0
 Description:
 Author: Petya
-Author URI: 
+Author URI:
 */
 
 ul.additional-products.clearfix{
 	list-style: none;
 	padding: 0;
-	margin: 0;	
+	margin: 0;
 }
 
 #our_products.footer-col{
@@ -26,15 +26,15 @@ ul.additional-products.clearfix{
 	color: #957c62;
 	display: block;
 	width: 100%;
-	margin: 0 auto;	
+	margin: 0 auto;
 }
 
 .footer ul.products-information-list li a:hover{
-	color: #efefef;	
+	color: #efefef;
 }
 
 .footer ul.products-information-list li a:before{
-	display: none;	
+	display: none;
 }
 
 #our_products .box-up-sell .jcarousel-next,
@@ -70,7 +70,7 @@ ul.additional-products.clearfix{
 	max-height: 100%;
 	width: 100%;
 	margin: 0;
-	height: auto;	
+	height: auto;
 }
 
 .woocommerce form .form-row label{
@@ -123,13 +123,13 @@ ul.additional-products.clearfix{
     position: absolute; top: 0; bottom: 0;
     right: 50px;
     border: 2px solid #E3E3E3; border-radius: 36px;
-    transition: all 0.3s ease-in 0s; 
+    transition: all 0.3s ease-in 0s;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
     margin-left: 0;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-    right: 0px; 
+    right: 0px;
 }
 
 .accept-cards{
@@ -171,7 +171,7 @@ div.next-posts-link{
 	margin-bottom: 15px;
 	position: relative;
 	text-align: center;
-	display: block;	
+	display: block;
 }
 
 .lang-list > a > img{
@@ -194,14 +194,14 @@ ins{
 }
 
 del{
-	color: #777;	
+	color: #777;
 }
 
 ins .amount{
 	font-size: 32px;
 	line-height: 40px;
 	font-style: italic;
-	font-weight: lighter;	
+	font-weight: lighter;
 	text-decoration: none !important;
 }
 
@@ -210,8 +210,8 @@ li.product .price .woocommerce-Price-amount.amount{
 	font-size: 32px;
 	line-height: 40px;
 	font-style: italic;
-	font-weight: lighter;	
-	text-decoration: none !important;	
+	font-weight: lighter;
+	text-decoration: none !important;
 }
 
 .product-view .summary p.price del .woocommerce-Price-amount.amount,
@@ -220,7 +220,7 @@ li.product .price del .woocommerce-Price-amount.amount{
 	margin-right: 20px;
 	font-style: italic;
 	font-weight: lighter;
-	
+
 }
 
 .additional-product .price-box del{
@@ -247,7 +247,7 @@ li.product .price del .woocommerce-Price-amount.amount{
 }
 
 .filter-holder{
-	border-bottom: 1px solid #777;	
+	border-bottom: 1px solid #777;
 	margin-bottom: 10px;
 }
 
@@ -268,7 +268,7 @@ span.sku_wrapper{
 
 .woocommerce div.product .product_title{
 	float: left;
-	color: #FFF;	
+	color: #FFF;
 	font-size: 28px;
 	text-transform: uppercase;
 }
@@ -276,7 +276,7 @@ span.sku_wrapper{
 .woocommerce div.product p.price,
 .product-add-to-cart-box{
 
-	border-bottom: 1px solid #777;	
+	border-bottom: 1px solid #777;
 }
 
 .product-add-to-cart-box{
@@ -299,24 +299,24 @@ span.sku_wrapper{
 
 .additional-products li{
 	clear: both;
-	border-bottom: 1px solid #777;	
+	border-bottom: 1px solid #777;
 	padding: 15px 0;
 }
 
 .additional-products li .price-box{
-	
+
 }
 
 .additional-products li .additional-product div,
 .additional-products li .additional-product h4{
 	float: left;
-	line-height: 50px;		
+	line-height: 50px;
 }
 
 .additional-products .price-box del span{
 	font-size: 14px;
 	font-style: italic;
-	font-weight: lighter;	
+	font-weight: lighter;
 }
 
 .additional-products .price-box ins span{
@@ -366,7 +366,7 @@ ul.products-ups.jcarousel-list.jcarousel-list-horizontal{
 .video-box{
 	margin-bottom: 20px;
 	display: block;
-	clear: both;	
+	clear: both;
 }
 
 
@@ -403,11 +403,11 @@ ul.products-ups.jcarousel-list.jcarousel-list-horizontal{
 .mini_cart_item .cart-item-image{
 	float: left;
 	padding: 10px;
-	max-width: 165px;	
+	max-width: 165px;
 }
 .mini_cart_item .cart-item-image{
 	line-height: 50px;
-	
+
 }
 
 .mini_cart_item .quantity{
@@ -485,7 +485,7 @@ div.wc-proceed-to-checkout{
 	display: block;
 	text-align: center;
 	width: 100%;
-	margin-top: 20px;	
+	margin-top: 20px;
 	cursor: pointer;
 }
 
@@ -506,19 +506,19 @@ div.wc-proceed-to-checkout{
 div.additional-product-actions{
 	margin-right: 10px;
 	font-size: 20px;
-	cursor: pointer;	
+	cursor: pointer;
 }
 
 .product-view .images{
 	max-width: 300px;
 }
 
-.shop_table.order_details tfoot tr:last-child th, 
+.shop_table.order_details tfoot tr:last-child th,
 .shop_table.order_details tfoot tr:last-child td{
 	border-top: 3px solid #957c62;
 	color: white;
 }
-.shop_table.order_details tfoot tr:first-child th, 
+.shop_table.order_details tfoot tr:first-child th,
 .shop_table.order_details tfoot tr:first-child td{
 	border-top: 1px solid #957c62;
 }
@@ -526,7 +526,7 @@ div.additional-product-actions{
 .addresses header.title{
 	border-bottom: 1px solid #aaa;
 	margin-bottom: 10px;
-	
+
 }
 
 span.item-per-pack{
@@ -752,7 +752,7 @@ form.video-search .search-submit,
 	border-bottom-color: #b1885d;
 	cursor: pointer;
 	margin-right: 10px;
-	text-transform: uppercase;	
+	text-transform: uppercase;
 	padding: 12px 16px;
 }
 
@@ -781,8 +781,8 @@ form.video-search .search-field{
 	font-size: 16px;
 	height: 41px;
 	resize: none;
-	-webkit-appearance: none; 
-	width: 249px; 
+	-webkit-appearance: none;
+	width: 249px;
 	margin-right: 20px;
 	padding-right: 0;
 	background: url("../images/main-container-bg.png") repeat scroll center top transparent;
@@ -813,9 +813,9 @@ form.video-search .search-field{
 	justify-content: center;
 	float: right;
 	align-items: center;
-	background: white; 
-	height: 250px; 
-	width: 250px;	
+	background: white;
+	height: 250px;
+	width: 250px;
 }
 
 .search-results .search-box p{
@@ -861,11 +861,11 @@ form.video-search .search-field{
 	border: 1px solid #525252;
 	background: #222;
 	color: #957c62;
-	padding: 20px 40px;	
+	padding: 20px 40px;
 	-webkit-transition: all .4s linear;
 	-moz-transition: all .4s linear;
 	-o-transition: all .4s linear;
-	transition: all .4s linear;	
+	transition: all .4s linear;
 	letter-spacing: 1px;
 }
 
@@ -885,28 +885,28 @@ form.video-search .search-field{
    color:    #444;
    opacity:  1;
    letter-spacing: 1px;
-   text-transform: uppercase   
+   text-transform: uppercase
 }
 
 #wpcf7-f217269-p217264-o2 .wpcf7-form-control-wrap input::-moz-placeholder { /* Mozilla Firefox 19+ */
    color:    #444;
    opacity:  1;
    letter-spacing: 1px;
-   text-transform: uppercase    
+   text-transform: uppercase
 }
 
 #wpcf7-f217269-p217264-o2 .wpcf7-form-control-wrap input:-ms-input-placeholder { /* Internet Explorer 10-11 */
    color:    #444;
    opacity:  1;
    letter-spacing: 1px;
-   text-transform: uppercase    
+   text-transform: uppercase
 }
 
 #wpcf7-f217269-p217264-o2 .wpcf7-form-control-wrap input::-ms-input-placeholder { /* Microsoft Edge */
    color:    #444;
    opacity:  1;
    letter-spacing: 1px;
-   text-transform: uppercase   
+   text-transform: uppercase
 }
 
 
@@ -918,14 +918,14 @@ form.video-search .search-field{
 
 .dekor-list-item .cover-img{
 	height: 100%;
-	max-width: 100%;	
+	max-width: 100%;
 }
 
 .dekor-list-item .cover-img{
 	width: 100%;
 	height: 300px;
 	display: block;
-	overflow: hidden;	
+	overflow: hidden;
 }
 
 .dekor-list-item h2 a{
@@ -961,18 +961,18 @@ a.more-info{
 div.block-social-media{
 	display: block;
 	float: right;
-	margin-right: 20px;	
+	margin-right: 20px;
 }
 
 ul.social-media li a{
 	padding: 6px 12px;
 	font-size: 20px;
-	border: 2px solid #957c62;  
+	border: 2px solid #957c62;
 	-webkit-transition: all 1s linear;
 	-moz-transition: all 1s linear;
 	-o-transition: all 1s linear;
 	transition: all 1s linear;
-	
+
 }
 
 ul.social-media li a:hover{
@@ -982,13 +982,13 @@ ul.social-media li a:hover{
 
 .cover-img img{
 	width: 100%;
-	height: auto;	
+	height: auto;
 }
 
 .entry-content h2{
 	font-size: 20px;
 	color: white;
-	font-weight: 200;	
+	font-weight: 200;
 }
 
 input[type=checkbox].addiotional-check{
@@ -1033,7 +1033,7 @@ img.khlogo{
 }
 
 .gift-name:hover{
-	color: #957c62;	
+	color: #957c62;
 }
 
 div#lightgallery a{
@@ -1044,7 +1044,7 @@ div#lightgallery a{
 	overflow: hidden;
 	margin: 1%;
 	margin-left: 1%;
-	margin-right: 0;	
+	margin-right: 0;
 	border: 5px solid #957c62;
 	box-sizing: border-box;
 	height: 300px;
@@ -1114,7 +1114,7 @@ body .QapTcha .dropError{
 }
 
 .tax-product_tag .entry-content img.size-full{
-	border: 1px solid #957c62;	
+	border: 1px solid #957c62;
 }
 
 h3.slogen{
@@ -1124,7 +1124,7 @@ h3.slogen{
 	line-height: 40px;
 	margin-bottom: 40px;
 	margin-top: 40px;
-	font-weight: 400;	
+	font-weight: 400;
 }
 
 .entry-content .product-image > img{
@@ -1155,7 +1155,7 @@ div.top-sale-button a i{
 }
 
 div.top-sale-button a{
-	color: rgb(212, 0, 0);	
+	color: rgb(212, 0, 0);
 }
 
 a.button.back_to_gifts{
@@ -1316,12 +1316,12 @@ div.wpcf7-response-output{
 	margin: 50px 0 0;
 	padding: 20px;
 	box-sizing: border-box;
-	color: black;	
+	color: black;
 }
 
 div.wpcf7-response-output.wpcf7-mail-sent-ok{
 	border: 2px solid #398f14;
-	background: #398f14	
+	background: #398f14
 }
 
 div.wpcf7-response-output.wpcf7-validation-errors{
@@ -1340,14 +1340,14 @@ div.summary.entry-summary{
 	text-align: center;
 	width: 100%;
 	z-index: 9999;
-	border: 3px solid rgba(237, 37, 7, 0.71);	
+	border: 3px solid rgba(237, 37, 7, 0.71);
 }
 
 .woocommerce-password-strength{
 	color: black;
 }
 
-.portfolioFilter a { 
+.portfolioFilter a {
 	text-decoration: none;
 	font-weight: bold;
 	padding: 20px;
@@ -1357,7 +1357,7 @@ div.summary.entry-summary{
 	margin-bottom: 20px;
 }
 
-.portfolioFilter a.current { 
+.portfolioFilter a.current {
     color: white
 }
 
@@ -1423,7 +1423,7 @@ div.summary.entry-summary{
 	-ms-transition: all 1s ease;
 	transition: all 1s ease;
 }
- 
+
 .grow img:hover {
   width: 400px;
   height: auto;
@@ -1440,7 +1440,7 @@ div#postaPontApi-inner{
 
 .fade.in{
 	background: rgba(0, 0, 0, .4);
-	opacity: 1;	
+	opacity: 1;
 }
 
 .modal.in .modal-dialog{
@@ -1451,12 +1451,12 @@ div#postaPontApi-inner{
 	background: #333;
 	border: 5px solid #6f6f6f;
 	border-radius: 0;
-	color: #cfcfcf	
+	color: #cfcfcf
 }
 
 .modal-title{
 	text-transform: uppercase;
-	font-size: 20px;	
+	font-size: 20px;
 }
 
 .modal-footer{
@@ -1481,7 +1481,7 @@ div#postaPontApi-inner{
 	display: inline-block;
 	text-align: center;
 	box-shadow: none;
-	
+
 	-webkit-box-shadow: none;
 	text-shadow: none;
 	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#d6c1ac', endColorstr='#b1885d');
@@ -1501,25 +1501,3 @@ div#postaPontApi-inner{
 	background: #dad8da;
 	color: #515151
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
