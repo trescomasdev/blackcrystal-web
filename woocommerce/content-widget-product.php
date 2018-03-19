@@ -28,8 +28,9 @@ global $product;
 		<?php echo $product->get_image(); ?>
 	</a>
 	<div>
-		<span class="product-title"><?php echo $product->get_name(); ?></span>
-
+    <a href="<?php echo esc_url( $product->get_permalink() ); ?>">
+		    <span class="product-title"><?php echo $product->get_name(); ?></span>
+    </a>
 		<?php if ( ! empty( $show_rating ) ) : ?>
 			<?php echo wc_get_rating_html( $product->get_average_rating() ); ?>
 		<?php endif; ?>

@@ -42,21 +42,21 @@
 							<div class="header">
 								<div class="quick-access">
 									<div class="header-links">
-										<?php wp_nav_menu(array( 
-											'menu' => '', 
-											'container' => '', 
+										<?php wp_nav_menu(array(
+											'menu' => '',
+											'container' => '',
 											'items_wrap' => '<ul id="%1$s" class="%2$s links">%3$s</ul>',
-											'theme_location' => 'header-menu' 
+											'theme_location' => 'header-menu'
 										))?>
 									</div>
 								</div>
-								<div class="quick-menu">									
+								<div class="quick-menu">
 									<div class="header-links">
-										<?php wp_nav_menu(array( 
-											'menu' => '', 
-											'container' => '', 
+										<?php wp_nav_menu(array(
+											'menu' => '',
+											'container' => '',
 											'items_wrap' => '<ul id="%1$s" class="%2$s links">%3$s</ul>',
-											'theme_location' => 'header-nav-menu' 
+											'theme_location' => 'header-nav-menu'
 										))?>
 									</div>
 								</div>
@@ -66,23 +66,23 @@
 									</div>
 									<div class="header-button top-facebook">
 										<a href="https://www.facebook.com/Black-Crystal-1457288184496495/" alt="Kövess minket Facebookon" title="Kövess minket Facebookon"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-									</div>								
+									</div>
 									<div class="header-button menu-list">
 										<i class="fa fa-info"></i>
-										<?php wp_nav_menu(array( 
-											'menu' => '', 
-											'container' => '', 
+										<?php wp_nav_menu(array(
+											'menu' => '',
+											'container' => '',
 											'items_wrap' => '<ul id="%1$s" class="%2$s links">%3$s</ul>',
-											'theme_location' => 'header-nav-menu' 
+											'theme_location' => 'header-nav-menu'
 										))?>
 									</div>
 									<div class="header-button menu-list">
 										<i class="fa fa-user"></i>
-										<?php wp_nav_menu(array( 
-											'menu' => '', 
-											'container' => '', 
+										<?php wp_nav_menu(array(
+											'menu' => '',
+											'container' => '',
 											'items_wrap' => '<ul id="%1$s" class="%2$s links">%3$s</ul>',
-											'theme_location' => 'header-menu' 
+											'theme_location' => 'header-menu'
 										))?>
 									</div>
 									<?php /*if ( defined( 'POLYLANG_VERSION' ) ):?>
@@ -100,7 +100,7 @@
 										</div>
 									<?php endif */?>
 								</div>
-								<h1 class="logo mobile"><a href="<?php echo home_url()?>" title="<?php bloginfo('name')?>" class="logo"><img width="200px" src="<?php bloginfo('template_url')?>/images/logo2.png" alt="<?php bloginfo('name')?>"/></a></h1>
+								<h1 class="logo mobile"><a href="<?php echo home_url()?>" title="<?php bloginfo('name')?>" class="logo test"><img width="200px" src="<?php bloginfo('template_url')?>/images/logo2.png" alt="<?php bloginfo('name')?>"/></a></h1>
 								<div class="block-cart-header">
 									<h3><i class="fa fa-shopping-cart"></i> <?php _e('Cart', 'woocommerce')?>:</h3>
 									<?php woocommerce_mini_cart()?>
@@ -113,7 +113,7 @@
 								<div class="header-info mobile">
 									<em><a id="callback-btn-mobile"><i class="fa fa-phone"></i><?php _e('Kérjen Visszahívást', 'theme-phrases')?></a></em>
 
-								</div> 
+								</div>
 							</div>
 						</div>
 					</div>
@@ -131,22 +131,22 @@
 				<div class="row">
 					<div class="span12">
 						<div id="menu-icon"><div><?php _e('Products', 'woocommerce')?></div></div>
-						<?php 
+						<?php
 							include_once( WC()->plugin_path() . '/includes/walkers/class-product-cat-list-walker.php' );
-						
+
 							$list_args['walker']                     = new WC_Product_Cat_List_Walker;
 							$list_args['title_li']                   = '';
 							$list_args['depth']                 = 3;
 							$list_args['taxonomy']                 = 'product_cat';
 							$list_args['current_category_ancestors']                 = '';
 							$list_args['show_option_none']           = __('No product categories exist.', 'woocommerce' );
-						
+
 							echo '<ul id="nav" class="menu sf-menu">';
-								wp_list_categories( $list_args );	
-							echo '</ul>';			
+								wp_list_categories( $list_args );
+							echo '</ul>';
 						?>
 						<ul class="sf-menu-phone">
-							<?php wp_list_categories( $list_args );	?>						
+							<?php wp_list_categories( $list_args );	?>
 						</ul>
 					</div>
 				</div>
