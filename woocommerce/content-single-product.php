@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 	echo get_the_password_form();
 	 	return;
 	 }
-	 
+
 	 global $product;
 ?>
 
@@ -50,9 +50,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	?>
 
 	<div class="summary entry-summary ">
-		<div class="product-title-line clearfix">
-			<?php woocommerce_template_single_title() ?>
-		</div>
 		<?php woocommerce_template_single_price() ?>
 		<?php //woocommerce_template_single_meta() ?>
 		<?php woocommerce_template_single_add_to_cart() ?>
@@ -68,9 +65,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<iframe src="http://www.youtube.com/embed/<?php echo get_post_meta(get_the_ID(), '_video_id', true)?>" frameborder="0" allowfullscreen=""></iframe>
 				</div>
 			</div>
-		</div>	
+		</div>
 	<?php endif;?>
-	
+
 	<?php woocommerce_output_related_products()?>
 
 

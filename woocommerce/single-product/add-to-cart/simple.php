@@ -37,11 +37,10 @@ if ( ! $product->is_purchasable() ) {
 			// Availability
 			$availability      = $product->get_availability();
 			$availability_html = empty( $availability['availability'] ) ? '' : '<p class="stock ' . esc_attr( $availability['class'] ) . '">' . esc_html( $availability['availability'] ) . '</p>';
-		
+
 			echo apply_filters( 'woocommerce_stock_html', $availability_html, $availability['availability'], $product );
-		?>	
+		?>
 	 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
-	 	<span class="qty-label"><?php _e('Quantity', 'woocommerce')?></span>
 	 	<?php
 	 		if ( ! $product->is_sold_individually() ) {
 	 			woocommerce_quantity_input( array(
@@ -79,14 +78,14 @@ if ( ! $product->is_purchasable() ) {
 				</div>
 				<div class="additional-product-info">
 					<p><?php _e('Kézzel készített bordó díszdoboz, kívül velúr, belül szaténnal bélelve. Kiemeli a kristály szépségét, ajándékozáshoz kiváló. (a kép illusztráció)', 'blackcrystal')?></p>
-				</div>				
+				</div>
 			</li>
 			<!--
 			<li class="clearfix">
 				<div class="additional-product clearfix">
 					<div class="additional-product-actions">
 						<i class="fa fa-info"></i>
-					</div>			
+					</div>
 					<div class="additional-product-image">
 						<a href="http://blackcrystal.hu/images/0001.jpg" class="zoom">
 							<img src="http://blackcrystal.hu/images/0001.jpg" />
@@ -106,8 +105,8 @@ if ( ! $product->is_purchasable() ) {
 				<div class="additional-product-info">
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ipsum nisi, venenatis non molestie ut, volutpat in justo. Nullam in maximus mi, nec scelerisque ante. Aenean ut mauris auctor enim interdum pharetra.</p>
 				</div>
-			</li>	
-			-->		
+			</li>
+			-->
 		</ul>
 </form>
 
