@@ -39,9 +39,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				if ($loop_count < 6){
 					$_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 					$product_id   = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
-	
+
 					if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
-	
+
 						$product_name  = apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key );
 						$thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(array(50,50)), $cart_item, $cart_item_key );
 						$product_price = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								<?php
 								echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
 									'<a href="%s" class="remove" title="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
-									esc_url( WC()->cart->get_remove_url( $cart_item_key ) ),
+									esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 									__( 'Remove this item', 'blackcrystal' ),
 									esc_attr( $product_id ),
 									esc_attr( $_product->get_sku() )
@@ -69,38 +69,38 @@ if ( ! defined( 'ABSPATH' ) ) {
 								<a href="<?php echo esc_url( $_product->get_permalink( $cart_item ) ); ?>">
 									<?=$product_name?>
 								</a>
-								<?php echo WC()->cart->get_item_data( $cart_item ); ?>
-		
+								<?php echo wc_get_formatted_cart_item_data( $cart_item ); ?>
+
 								<?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key ); ?>
 							</div>
 						</li>
 						<?php
 					}
-				
+
 				} elseif ($loop_count == 6){
 					echo '<small>';
 					_e('(további termékek ...)', 'blackcrystal');
 					echo '</small>';
 				}
-				
+
 				$loop_count++;
-				 
+
 				?>
 		<?php }	?>
 			</ul>
 				<?php if ( ! WC()->cart->is_empty() ) : ?>
-				
+
 					<p class="total"><strong><?php _e( 'Subtotal', 'blackcrystal' ); ?>:</strong> <?php echo WC()->cart->get_cart_subtotal(); ?></p>
-				
+
 					<?php do_action( 'woocommerce_widget_shopping_cart_before_buttons' ); ?>
-				
+
 					<p class="buttons">
 						<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="button wc-forward"><?php _e( 'View Cart', 'blackcrystal' ); ?></a>
 						<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="button checkout wc-forward <?php echo (get_option('minimum_amount') > 0 && WC()->cart->cart_contents_total < get_option('minimum_amount') ? 'disabled' : '') ?> "><?php _e( 'Checkout', 'blackcrystal' ); ?></a>
 					</p>
-				
-				<?php endif; ?>		
-						
+
+				<?php endif; ?>
+
 			</div>
 		</div>
 

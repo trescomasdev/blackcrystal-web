@@ -1,6 +1,6 @@
 <?php
 function get_add_price_net($prod_id){
-	$add_price = get_post_meta($prod_id->id, '_add_product_price', true);
+	$add_price = get_post_meta($prod_id->get_id(), '_add_product_price', true);
 	$adjust_add_price = get_option( 'adjust_add_price' );
 	$sale = (int) get_option( 'pack_sale_percent');
 	$exchange_rate = (int) get_option( 'exchange_rate');

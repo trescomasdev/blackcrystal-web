@@ -21,7 +21,7 @@ if(!class_exists('CustomWoo')) {
 
 
 			add_action( 'woocommerce_remove_cart_item', array(&$this, 'remove_additional_product'), 10, 2 );
-			add_filter( 'woocommerce_get_cart_item_from_session', array(&$this, 'get_cart_items_from_session'), 1, 3 );
+			// add_filter( 'woocommerce_get_cart_item_from_session', array(&$this, 'get_cart_items_from_session'), 1, 3 );
 			add_action(	'woocommerce_add_to_cart', array(&$this, 'add_cart_item'), 10, 6);
 			add_filter( 'woocommerce_add_cart_item', array(&$this, 'filter_woocommerce_add_cart_item'), 10, 1 );
 			add_action( 'woocommerce_add_order_item_meta', array(&$this, 'save_order_itemmeta'), 10, 3 );
@@ -59,8 +59,8 @@ if(!class_exists('CustomWoo')) {
 		          $availability = __( 'In stock', 'blackcrystal' );
 		        break;
 		        case 'low_amount' :
-		          if ( $this->get_total_stock() <= get_option( 'woocommerce_notify_low_stock_amount' ) ) {
-		            $availability = sprintf( __( 'Only %s left in stock', 'blackcrystal' ), $obj->get_total_stock() );
+		          if ( $this->get_stock_quantity() <= get_option( 'woocommerce_notify_low_stock_amount' ) ) {
+		            $availability = sprintf( __( 'Only %s left in stock', 'blackcrystal' ), $obj->get_stock_quantity() );
 
 		            if ( $this->backorders_allowed() && $this->backorders_require_notification() ) {
 		              $availability .= ' ' . __( '(also available on backorder)', 'blackcrystal' );
@@ -70,7 +70,7 @@ if(!class_exists('CustomWoo')) {
 		          }
 		        break;
 		        default :
-		          $availability = sprintf( __( '%s in stock', 'blackcrystal' ), $obj->get_total_stock() );
+		          $availability = sprintf( __( '%s in stock', 'blackcrystal' ), $obj->get_stock_quantity() );
 
 		          if ( $obj->backorders_allowed() && $obj->backorders_require_notification() ) {
 		            $availability .= ' ' . __( '(also available on backorder)', 'blackcrystal' );
@@ -281,7 +281,7 @@ if(!class_exists('CustomWoo')) {
 
 		public function get_cart_items_from_session( $item, $values, $key ) {
 
-			if ($item['data']->id == get_product_by_sku(1000)){
+			if ($item['data']->get_id() == get_product_by_sku(1000)){
 			    $item['data']->post->post_title = sprintf(__("Díszdoboz a %d kódszámú termékhez", 'blackcrystal'), $item['prod_id']);
 				$item['data']->set_price( $item['package'] );
 			}
@@ -536,7 +536,7 @@ if(!class_exists('CustomWoo')) {
 					$product = new WC_Product( $order_item['product_id'] );
 					$ipp = (int) get_post_meta($order_item['product_id'], '_item_per_pack', true);
 					$price = (int) $product->get_price();
-					if (get_post_meta($product->id, '_sku', true) == 1000) $price = $order_item['line_subtotal'] / $order_item['qty'];
+					if (get_post_meta($product->get_id(), '_sku', true) == 1000) $price = $order_item['line_subtotal'] / $order_item['qty'];
 					if ($ipp > 0) $price = round($price / $ipp);
 
 					$grossvalue = $order_item['line_subtotal'] + $order_item['line_subtotal_tax'];

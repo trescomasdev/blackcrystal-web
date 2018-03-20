@@ -31,21 +31,21 @@ global $post, $woocommerce, $product;
 				$image         = get_the_post_thumbnail( $post->ID, apply_filters( 'single_product_large_thumbnail_size', 'shop_catalog' ), array(
 					'title'	=> get_the_title( get_post_thumbnail_id() )
 				) );
-	
-				$attachment_count = count( $product->get_gallery_attachment_ids() );
-	
+
+				$attachment_count = count( $product->get_gallery_image_ids() );
+
 				if ( $attachment_count > 0 ) {
 					$gallery = '[product-gallery]';
 				} else {
 					$gallery = '';
 				}
-	
+
 				echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<a href="%s" itemprop="image" class="woocommerce-main-image zoom product-image" title="%s" data-rel="prettyPhoto' . $gallery . '">%s</a>', $image_link, $image_caption, $image ), $post->ID );
-	
+
 			} else {
-	
+
 				echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<img src="%s" alt="%s" />', wc_placeholder_img_src(), __( 'Placeholder', 'woocommerce' ) ), $post->ID );
-	
+
 			}
 		?>
 		<span class="sku_wrapper"><?php _e( 'SKU:', 'woocommerce' ); ?> <span class="sku" itemprop="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : __( 'N/A', 'woocommerce' ); ?></span></span>
