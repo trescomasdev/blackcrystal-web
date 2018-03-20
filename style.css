@@ -417,7 +417,15 @@ li.product .price del .woocommerce-Price-amount.amount{
 	color: #AAA;
 }
 
-span.sku_wrapper{
+.product_meta{
+	padding: 10px 0;
+}
+
+.product_meta span.sku_wrapper{
+	display: none;
+}
+
+.thumb-holder span.sku_wrapper{
 	background-color: rgba(0,0,0,.8);
 	color: white;
 	position: absolute;

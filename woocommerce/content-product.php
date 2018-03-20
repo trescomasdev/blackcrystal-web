@@ -59,7 +59,7 @@ $classes[] = 'item span3';
 	<?php else: ?>
 		<a href="<?php the_permalink()?>" class="product-image">
 			<img src="<?php bloginfo('template_url')?>/images/default-no-image.png" />
-			<span class="sku_wrapper"><span class="sku" itemprop="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : __( 'N/A', 'woocommerce' ); ?></span></span>			
+			<span class="sku_wrapper"><span class="sku" itemprop="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : __( 'N/A', 'woocommerce' ); ?></span></span>
 		</a>
 	<?php endif; ?>
 	<h3 class="product-name">
@@ -68,7 +68,7 @@ $classes[] = 'item span3';
 		</a>
 	</h3>
 	<div class="price-box">
-		<?php woocommerce_template_loop_price()?>	
+		<?php woocommerce_template_loop_price()?>
 	</div>
 	<a href="<?php the_permalink()?>" class="more-info"><?php _e('Részletek', 'blackcrystal')?></a>
 	<?php $shp = get_user_meta(get_current_user_id(), '_show_customer_price', true );?>

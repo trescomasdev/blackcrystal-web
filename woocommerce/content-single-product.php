@@ -51,10 +51,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="summary entry-summary ">
 		<?php woocommerce_template_single_price() ?>
-		<?php //woocommerce_template_single_meta() ?>
 		<?php woocommerce_template_single_add_to_cart() ?>
+		<?php woocommerce_template_single_meta() ?>		
 		<?php woocommerce_output_product_data_tabs()?>
-
 	</div><!-- .summary -->
 	<?php woocommerce_upsell_display()?>
 	<?php if (get_post_meta(get_the_ID(), '_video_id', true) != ""):?>

@@ -54,7 +54,7 @@ $classes[] = 'item';
 		<?php if (has_post_thumbnail()):?>
 			<?php the_post_thumbnail('shop_catalog')?>
 		<?php else: ?>
-			<img src="<?php echo home_url()?>/wp-content/themes/blackcrystal/images/default-no-image.png">		
+			<img src="<?php echo home_url()?>/wp-content/themes/blackcrystal/images/default-no-image.png">
 		<?php endif;?>
 	</a>
 	<h3 class="product-name">
@@ -63,7 +63,7 @@ $classes[] = 'item';
 		</a>
 	</h3>
 	<div class="price-box">
-		<?php woocommerce_template_loop_price()?>	
+		<?php woocommerce_template_loop_price()?>
 	</div>
 	<?php woocommerce_template_loop_add_to_cart()	?>
 
