@@ -23,10 +23,11 @@ global $product;
 ?>
 <li>
 	<?php do_action( 'woocommerce_widget_product_item_start', $args ); ?>
-
-	<a href="<?php echo esc_url( $product->get_permalink() ); ?>">
-		<?php echo $product->get_image(); ?>
-	</a>
+	<?php if ($product->get_image() != ""): ?>
+		<a href="<?php echo esc_url( $product->get_permalink() ); ?>">
+			<?php echo $product->get_image(); ?>
+		</a>
+	<?php endif; ?>
 	<div>
     <a href="<?php echo esc_url( $product->get_permalink() ); ?>">
 		    <span class="product-title"><?php echo $product->get_name(); ?></span>
