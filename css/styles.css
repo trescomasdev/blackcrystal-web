@@ -1254,7 +1254,6 @@ tr.summary-details-excluded { font-style:italic; }
  .additional-product-image a,
  .woocommerce ul.cart_list li a,
  .cart_item .product-thumbnail a,
- .woocommerce ul.product_list_widget li a.widget-product-image,
  .cart-item-image .remove + a{
 	display: -ms-flexbox;
 	display: -webkit-flex;
@@ -1284,8 +1283,7 @@ tr.summary-details-excluded { font-style:italic; }
 	width: 80px;
  }
 
-.woocommerce ul.cart_list li a img,
-.woocommerce ul.product_list_widget li a img{
+.woocommerce ul.cart_list li a img{
 	width: auto;
 	height: auto;
 	max-height: 100%;

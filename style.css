@@ -120,7 +120,6 @@ nav.woocommerce-MyAccount-navigation ul li a{
 	flex: 1
 }
 
-
 nav.woocommerce-MyAccount-navigation ul li:last-child a{
 	border-right: 0;
 }
@@ -129,6 +128,39 @@ nav.woocommerce-MyAccount-navigation ul li:last-child a{
 	padding: 20px;
 	box-sizing: border-box
 }
+
+
+/********   Product Widget    *************/
+
+.woocommerce ul.product_list_widget li{
+	display: flex;
+}
+
+.woocommerce ul.product_list_widget li > a:first-child{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 70px;
+	height: 70px;
+	margin-right: 10px;
+}
+
+.woocommerce ul.product_list_widget li > a:first-child img{
+	width: auto;
+	height: auto;
+	max-height: 100%;
+	max-width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -493,12 +525,6 @@ ul.products-ups.jcarousel-list.jcarousel-list-horizontal{
 	margin-bottom: 20px;
 	display: block;
 	clear: both;
-}
-
-
-.woocommerce ul.product_list_widget li{
-	text-align: left;
-	padding: 20px 0;
 }
 
 .block-content li{
