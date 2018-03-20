@@ -136,22 +136,26 @@ nav.woocommerce-MyAccount-navigation ul li:last-child a{
 	display: flex;
 }
 
-.woocommerce ul.product_list_widget li > a:first-child{
+.woocommerce ul.product_list_widget li > a{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 70px;
 	height: 70px;
 	margin-right: 10px;
+	background: white;
 }
 
-.woocommerce ul.product_list_widget li > a:first-child img{
+.woocommerce ul.product_list_widget li > a img{
 	width: auto;
 	height: auto;
 	max-height: 100%;
 	max-width: 100%;
 }
 
+.woocommerce ul.product_list_widget li > a + div{
+	flex: 1
+}
 
 
 
