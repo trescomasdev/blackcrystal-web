@@ -35,7 +35,7 @@ wc_print_notices(); ?>
 	);
 	?>
 </p>
-<?php if (SIMPLE_SHOP == false):?>
+<?php if (get_option("shop_type") == "wholesale"):?>
 		<span class="show_price_switch_label">Eladási árak megjelenítése? </span>
 		<div class="onoffswitch">
 		    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" value="<?php echo get_user_meta( get_current_user_id(), '_show_customer_price', true ) ?>" id="myonoffswitch" <?php echo (get_user_meta( get_current_user_id(), '_show_customer_price', true ) == false ? "" : "checked")?>>
@@ -43,24 +43,24 @@ wc_print_notices(); ?>
 		        <span class="onoffswitch-inner"></span>
 		        <span class="onoffswitch-switch"></span>
 		    </label>
-		</div>	    
+		</div>
     <script type="text/javascript">
-       
+
         jQuery('.onoffswitch-checkbox').on('change', function(){
 			var ajaxurl = '<?php echo admin_url( 'admin-ajax.php' )?>';
 			var val = jQuery(this).val()
 			jQuery.post(
-			    ajaxurl, 
+			    ajaxurl,
 			    {
 			        'action': 'display_price_action',
 			        'data':   val
-			    }, 
+			    },
 			    function(response){
 					location.reload();
 			    }
 			);
         })
-       
+
     </script>
 </div>
 <?php endif?>

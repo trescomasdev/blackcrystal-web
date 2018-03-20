@@ -22,10 +22,10 @@
 						</div>
 					</div>
 				</div>
-				<?php if (SIMPLE_SHOP):?>
+				<?php if (get_option("shop_type") != "wholesale"):?>
 					<img class="accept-cards" src="<?php echo get_template_directory_uri()?>/images/accepted-cards.jpg" />
-				<?php endif; ?>
-				<?php if (SIMPLE_SHOP):?>
+				<?php endif;?>
+				<?php if (get_option("shop_type") != "wholesale"):?>
 					<img src="<?php echo get_option('kh_logo')?>" class="khlogo"/>
 				<?php endif;?>
 			</div>

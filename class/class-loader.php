@@ -65,18 +65,20 @@
 					wp_enqueue_script( 'jquery.easing.1.3', get_template_directory_uri() . '/js/jquery.easing.1.3.js', array('jquery'), '1.0.0', true );
 					wp_enqueue_script( 'superfish', get_template_directory_uri() . '/js/superfish.js', array('jquery'), '1.0.0', true );
 					wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0', true );
-					wp_localize_script(
-						'scripts', 'texts',
-						array(
-							'not_enough' => __('Díszdoboz csak teljes készlethez érhető el', 'blackcrystal'),
-							'low_order_amount_title' => __("Checkout error", 'blackcrystal'),
-							'low_order_amount' => sprintf( __('You must have an order with a minimum of %s to place your order, your current order total is %s.', 'blackcrystal') ,
-					                	wc_price( get_option('minimum_amount') ),
-									wc_price( WC()->cart->cart_contents_total
-								)
-							),
-						)
-					);
+					if (class_exists("WooCommerce")){
+						wp_localize_script(
+							'scripts', 'texts',
+							array(
+								'not_enough' => __('Díszdoboz csak teljes készlethez érhető el', 'blackcrystal'),
+								'low_order_amount_title' => __("Checkout error", 'blackcrystal'),
+								'low_order_amount' => sprintf( __('You must have an order with a minimum of %s to place your order, your current order total is %s.', 'blackcrystal') ,
+						                	wc_price( get_option('minimum_amount') ),
+										wc_price( WC()->cart->cart_contents_total
+									)
+								),
+							)
+						);
+					}
 					wp_enqueue_script( 'camera', get_template_directory_uri() . '/js/camera.js', array('jquery'), '1.0.0', true );
 
 			   //wp_enqueue_script( 'init', get_template_directory_uri() . '/js/init.js', array('jquery'), '1.0.0', true );
@@ -85,10 +87,11 @@
 			function woocommerce_scripts_cleaner() {
 
 				// Remove the generator tag
-				remove_action( 'wp_head', array( $GLOBALS['woocommerce'], 'generator' ) );
+				if (class_exists("WooCommerce"))
+					remove_action( 'wp_head', array( $GLOBALS['woocommerce'], 'generator' ) );
 				// Unless we're in the store, remove all the cruft!
 
-				if ( ! is_woocommerce() && ! is_cart() && ! is_checkout() ) {
+				if ( class_exists("WooCommerce") && ! is_woocommerce() && ! is_cart() && ! is_checkout() ) {
 					wp_dequeue_style( 'woocommerce_frontend_styles' );
 					wp_dequeue_style( 'woocommerce-general');
 					wp_dequeue_style( 'woocommerce-layout' );

@@ -86,18 +86,18 @@ if(!class_exists('ThemeFramework')) {
 		}
 
 		public function register_settings(){
-			register_setting('theme-group', 'page_video');
-			register_setting('theme-group', 'page_kontakt');
-			register_setting('theme-group', 'page_sale');
-			register_setting('theme-group', 'page_gift');
-			register_setting('theme-group', 'page_actuality');
-			register_setting('theme-group', 'page_subtitle');
-			register_setting('theme-group', 'page_shipping');
-			register_setting('theme-group', 'callback_form');
-			register_setting('theme-group', 'writeus_form');
-			register_setting('theme-group', 'kh_logo');
-			register_setting('theme-group', 'video_form');
-			register_setting('theme-group', 'google_analytics');
+			register_setting('theme-options', 'page_video');
+			register_setting('theme-options', 'page_kontakt');
+			register_setting('theme-options', 'page_sale');
+			register_setting('theme-options', 'page_gift');
+			register_setting('theme-options', 'page_actuality');
+			register_setting('theme-options', 'page_subtitle');
+			register_setting('theme-options', 'page_shipping');
+			register_setting('theme-options', 'callback_form');
+			register_setting('theme-options', 'writeus_form');
+			register_setting('theme-options', 'kh_logo');
+			register_setting('theme-options', 'video_form');
+			register_setting('theme-options', 'google_analytics');
 		}
 
 		public function images_setup(){
@@ -117,10 +117,8 @@ if(!class_exists('ThemeFramework')) {
 			register_nav_menu( 'header-nav-menu', __( 'Header nav menu', 'blackcrystal' ) );
 		}
 
-
-
 		function loginout_menu_link( $items, $args ) {
-		   if ($args->theme_location == 'header-menu') {
+		   if ($args->theme_location == 'header-menu' && class_exists("WooCommerce")) {
 		      if (is_user_logged_in()) {
 		         $items .= '<li class=""><a href="'. get_the_permalink(woocommerce_get_page_id('myaccount')) .'">'.__('My Account', 'blackcrystal').'</a></li>';
 		         $items .= '<li class=""><a href="'. wp_logout_url(home_url()) .'">'.__('Logout', 'blackcrystal').'</a></li>';
