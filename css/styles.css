@@ -278,17 +278,6 @@ button.button span span {
 	font-family: 'Droid Sans', sans-serif;
 }
 
-input[type="text"],
-input[type="email"]{
-	padding: 10px 12px;
-	color: white;
-	max-width: 100%;
-}
-
-.wpcf7-form-control-wrap input[type="text"],
-.wpcf7-form-control-wrap input[type="email"]{
-	margin-bottom: 10px;
-}
 
 button.button > span,
 .block-wishlist .actions a,

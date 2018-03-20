@@ -7,6 +7,132 @@ Author: Petya
 Author URI:
 */
 
+/********   FORMS    *************/
+
+#write-us-form .form-fields > div{
+	flex-basis: 49%;
+	display: flex;
+}
+
+#write-us-form .form-fields > div:first-child{
+	flex-direction: column;
+}
+
+#write-us-form .wpcf7-form-control-wrap{
+	display: flex;
+	flex: 1;
+	margin-top: 10px;
+}
+
+#write-us-form .wpcf7-form-control-wrap > textarea,
+#write-us-form .wpcf7-form-control-wrap > input{
+	background: #333;
+	padding: 20px;
+	color: white;
+	flex: 1
+}
+
+#write-us-form .wpcf7-form-control-wrap > textarea::placeholder
+#write-us-form .wpcf7-form-control-wrap > input::placeholder{
+	color: #efefef
+}
+
+#write-us-form .form-fields{
+	display: flex;
+	justify-content: space-between;
+}
+
+#write-us-form .wpcf7-submit{
+	width: 100%;
+	padding: 15px;
+	display: block;
+	background: #957c62;
+	border: 0;
+	color: #333;
+	font-size: 18px;
+	margin-top: 25px
+}
+
+#write-us-form .wpcf7-submit:hover{
+	background: #957c62;
+	color: #222;
+	border-color: transparent;
+}
+
+.wpcf7 .ajax-loader{
+	position: absolute;
+}
+
+div.wpcf7-response-output{
+	display: block;
+	display: inline-block;
+	width: 100%;
+	margin: 10px 0 0;
+	padding: 20px;
+	box-sizing: border-box;
+	color: black;
+	border-color: transparent
+}
+
+div.wpcf7-response-output.wpcf7-mail-sent-ok{
+	border: 2px solid #398f14;
+	background: #398f14
+}
+
+div.wpcf7-response-output.wpcf7-validation-errors{
+	background: #f7b105;
+	border-color: #f7b105;
+}
+
+span.wpcf7-not-valid-tip{
+	position: absolute;
+	right: 0;
+	color: #df2516;
+	padding: 5px;
+}
+
+
+/********   ACCOUNT PAGE    *************/
+
+nav.woocommerce-MyAccount-navigation{
+
+}
+
+nav.woocommerce-MyAccount-navigation ul{
+	margin: 0 0 20px;
+	display: flex;
+	list-style: none;
+	padding: 0
+}
+
+nav.woocommerce-MyAccount-navigation ul li{
+	list-style: none;
+	flex: 1;
+	display: flex;
+	padding: 0;
+}
+
+nav.woocommerce-MyAccount-navigation ul li a{
+	background: rgba(45, 45, 45, 0.54);
+	border-right: 1px solid #333;
+	text-align: center;
+	padding: 15px 0;
+	flex: 1
+}
+
+
+nav.woocommerce-MyAccount-navigation ul li:last-child a{
+	border-right: 0;
+}
+
+.woocommerce-MyAccount-content .col2-set .col-1, .col2-set .col-2{
+	padding: 20px;
+	box-sizing: border-box
+}
+
+
+
+
 ul.additional-products.clearfix{
 	list-style: none;
 	padding: 0;
@@ -716,23 +842,6 @@ table.shop_table.order_details{
 	clear: both;
 }
 
-div.form-right{
-	float: right;
-	width: 50%;
-}
-
-div.form-left{
-	float: left;
-	width: 50%;
-}
-
-.entry-content .wpcf7 .QapTcha.wpcf7-captcha,
-.entry-content .wpcf7 .wpcf7-form-control-wrap{
-	display: block;
-	text-align: left;
-	margin-left: 50px;
-}
-
 
 form.video-search .search-submit,
 .read-more{
@@ -826,89 +935,6 @@ form.video-search .search-field{
 	margin-top: 20px;
 	display: block;
 }
-
-#wpcf7-f217269-p217264-o2 .wpcf7-form-control-wrap,
-#wpcf7-f217269-p217264-o2 .wpcf7-captcha{
-	float: left;
-	display: block;
-}
-
-#wpcf7-f217269-p217264-o2 .wpcf7-form-control-wrap{
-	margin: 0;
-	margin-left: 0;
-	margin-right: 1%;
-	display: block;
-	width: 49%;
-	float: left;
-}
-
-#wpcf7-f217269-p217264-o2 .wpcf7-form-control-wrap:nth-child(odd){
-	margin-left: 1%;
-	margin-right: 0;
-}
-
-#wpcf7-f217269-p217264-o2 .wpcf7-form-control-wrap input{
-	display: block;
-	padding: 20px;
-	box-sizing: border-box;
-	width: 100%;
-	background: #957c62;
-	color: #111;
-	text-transform: uppercase
-}
-
-#wpcf7-f217269-p217264-o2 .wpcf7-submit{
-	border: 1px solid #525252;
-	background: #222;
-	color: #957c62;
-	padding: 20px 40px;
-	-webkit-transition: all .4s linear;
-	-moz-transition: all .4s linear;
-	-o-transition: all .4s linear;
-	transition: all .4s linear;
-	letter-spacing: 1px;
-}
-
-#wpcf7-f217269-p217264-o2 .wpcf7-submit:hover{
-	background: #957c62;
-	color: #222;
-	border-color: transparent;
-}
-
-#wpcf7-f217269-p217264-o2 .wpcf7-form-control-wrap input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #444;
-   	text-transform: uppercase;
-   	letter-spacing: 1px;
-}
-
-#wpcf7-f217269-p217264-o2 .wpcf7-form-control-wrap input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #444;
-   opacity:  1;
-   letter-spacing: 1px;
-   text-transform: uppercase
-}
-
-#wpcf7-f217269-p217264-o2 .wpcf7-form-control-wrap input::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #444;
-   opacity:  1;
-   letter-spacing: 1px;
-   text-transform: uppercase
-}
-
-#wpcf7-f217269-p217264-o2 .wpcf7-form-control-wrap input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #444;
-   opacity:  1;
-   letter-spacing: 1px;
-   text-transform: uppercase
-}
-
-#wpcf7-f217269-p217264-o2 .wpcf7-form-control-wrap input::-ms-input-placeholder { /* Microsoft Edge */
-   color:    #444;
-   opacity:  1;
-   letter-spacing: 1px;
-   text-transform: uppercase
-}
-
 
 .dekor-list-item{
 	clear: both;
@@ -1307,26 +1333,6 @@ div.footer-container{
 
 .shop_table.order_details tfoot tr:nth-child(4n){
 	display: none;
-}
-
-div.wpcf7-response-output{
-	display: block;
-	display: inline-block;
-	width: 90%;
-	margin: 50px 0 0;
-	padding: 20px;
-	box-sizing: border-box;
-	color: black;
-}
-
-div.wpcf7-response-output.wpcf7-mail-sent-ok{
-	border: 2px solid #398f14;
-	background: #398f14
-}
-
-div.wpcf7-response-output.wpcf7-validation-errors{
-	background: #f7b105;
-	border-color: #f7b105;
 }
 
 div.summary.entry-summary{

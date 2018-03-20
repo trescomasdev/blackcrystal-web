@@ -1,4 +1,5 @@
 <?php
+
 if(!class_exists('wCore')) {
 
 	class wCore{
@@ -147,3 +148,39 @@ if(!class_exists('ThemeFramework')) {
 }
 
 $ThemeFramework = new ThemeFramework();
+
+
+add_action('woocommerce_account_content', 'account_content');
+
+function account_content(){
+	if (get_option("shop_type") == "wholesale"){
+		echo('
+			<span class="show_price_switch_label">Eladási árak megjelenítése? </span>
+			<div class="onoffswitch">
+			    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" value="'. get_user_meta( get_current_user_id(), '_show_customer_price', true ).'" id="myonoffswitch"'.(get_user_meta( get_current_user_id(), '_show_customer_price', true ) == false ? "" : "checked").'>
+			    <label class="onoffswitch-label" for="myonoffswitch">
+			        <span class="onoffswitch-inner"></span>
+			        <span class="onoffswitch-switch"></span>
+			    </label>
+			</div>
+	    <script type="text/javascript">
+
+	        jQuery(".onoffswitch-checkbox").on("change", function(){
+				var ajaxurl = "'. admin_url( 'admin-ajax.php' ).'";
+				var val = jQuery(this).val()
+				jQuery.post(
+				    ajaxurl,
+				    {
+				        "action": "display_price_action",
+				        "data":   val
+				    },
+				    function(response){
+						location.reload();
+				    }
+				);
+	        })
+
+	    </script>
+	');
+	}
+}

@@ -6,16 +6,18 @@
 				<div class="span12">
 					<div class="main">
 						<div class="breadcrumbs">
-							<?php if ( function_exists('yoast_breadcrumb') ) 
+							<?php if ( function_exists('yoast_breadcrumb') )
 {yoast_breadcrumb('<p id="breadcrumbs">','</p>');} ?>
 						</div>
 						<div class="row">
 							<div class="col-main span9">
 								<div class="padding-s">
 									<?php if (have_posts()): the_post();?>
-										<h2 class="page-title"><strong><?php the_title()?></strong></h2>									
+										<h2 class="page-title"><strong><?php the_title()?></strong></h2>
 										<div class="entry-content">
 											<?php the_content();?>
+										</div>
+										<div id="write-us-form">
 											<?php echo do_shortcode(get_option('writeus_form'))?>
 										</div>
 									<?php endif;?>
