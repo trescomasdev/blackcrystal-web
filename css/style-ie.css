@@ -32,11 +32,7 @@
 * html .notice-msg {
   height: 24px;
 }
-.block li.item,
-.block-poll li,
-.opc li.section {
-  vertical-align: top;
-}
+
 /* Doubled Margin Fixes */
 .product-view .product-img-box .more-views li,
 .product-view .box-tags .form-add .input-box,
@@ -143,8 +139,6 @@ button.button span {
 .cart-collaterals,
 .cart .crosssell li.item,
 .cart .discount,
-.opc .step-title,
-.opc .step,
 .multiple-checkout,
 .sp-methods,
 .checkout-progress,

@@ -158,8 +158,17 @@ nav.woocommerce-MyAccount-navigation ul li:last-child a{
 }
 
 
+/********   Single Product    *************/
 
-
+.woocommerce div.product div.images a{
+	width: 300px;
+	height: 300px;
+	overflow: hidden;
+	background: white;
+	display: flex;
+	justify-content: center;
+	align-items: center
+}
 
 
 
@@ -425,6 +434,7 @@ li.product .price del .woocommerce-Price-amount.amount{
 	display: none;
 }
 
+.product-image span.sku_wrapper,
 .thumb-holder span.sku_wrapper{
 	background-color: rgba(0,0,0,.8);
 	color: white;
