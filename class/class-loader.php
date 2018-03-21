@@ -71,7 +71,7 @@
 					wp_enqueue_script( 'jquery.swipebox.min', get_template_directory_uri() . '/js/jquery.swipebox.min.js', array('jquery'), '1.0.0', true );
 					wp_enqueue_script( 'j-carousel', get_template_directory_uri() . '/js/j-carousel.js', array('jquery'), '1.0.0', true );
 					wp_enqueue_script( 'jquery.easing.1.3', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js', array('jquery'), '1.0.0', true );
-					wp_enqueue_script( 'superfish', 'https://cdnjs.cloudflare.com/ajax/libs/superfish/1.7.9/js/superfish.min.js', array('jquery'), '1.0.0', true );
+			   	wp_enqueue_script( 'superfish', get_template_directory_uri() . '/js/superfish.min.js', array('jquery'), '1.0.0', true );	
 					wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0', true );
 					if (class_exists("WooCommerce")){
 						wp_localize_script(
