@@ -87,6 +87,7 @@ if(!class_exists('ThemeFramework')) {
 		}
 
 		public function register_settings(){
+			register_setting('theme-options', 'shop_type');
 			register_setting('theme-options', 'page_video');
 			register_setting('theme-options', 'page_kontakt');
 			register_setting('theme-options', 'page_sale');
