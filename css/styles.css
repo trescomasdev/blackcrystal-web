@@ -201,7 +201,10 @@ button.button span:before,
 
 /* Global Styles ========================================================================= */
 /* Form Elements */
-input,select,textarea,button { font:12px Arial, Helvetica, sans-serif; vertical-align:middle; color:#59595c; }
+input,select,textarea,button {
+  font-size: 14px;   
+  vertical-align:middle; color:#59595c;
+}
 input.input-text,select,textarea,
 input[type="text"],
 input[type="email"]{

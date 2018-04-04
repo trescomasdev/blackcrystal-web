@@ -24,39 +24,6 @@
 										<?php endif;?>
 									<?php endif;?>
 									<?php echo do_shortcode('[rev_slider alias="homeslider"]')?>
-									<ul class="banner-block row">
-										<li class="span4">
-											<a href="<?php echo get_post_type_archive_link('design')?>">
-												<img src="<?php bloginfo('template_url')?>/images/banners-1.jpg" alt=""/>
-												<div class="banner-block-center">
-													<div>
-														<h1><?php _e('Dekorok', 'blackcrystal')?></h1>
-														<!--<p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmo.</p>-->
-													</div>
-												</div>
-											</a>
-										</li>
-										<li class="span4">
-											<a href="<?php echo get_permalink(get_option('page_video'))?>">
-												<img src="<?php bloginfo('template_url')?>/images/banners-1.jpg" alt=""/>
-												<div class="banner-block-center">
-													<div>
-														<h1><?php _e('Videók', 'blackcrystal')?></h1>
-													</div>
-												</div>
-											</a>
-										</li>
-										<li class="span4">
-											<a href="<?php echo get_permalink(get_option('page_gift'))?>">
-												<img src="<?php bloginfo('template_url')?>/images/banners-1.jpg" alt=""/>
-												<div class="banner-block-center">
-													<div>
-														<h1><?php _e('Ajándék ötletek', 'blackcrystal')?></h1>
-													</div>
-												</div>
-											</a>
-										</li>
-									</ul>
 								</div>
 								<div class="page-title category-title">
 									<h1 class="subtitle"><?php _e('Featured Products', 'blackcrystal')?></h1>

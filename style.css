@@ -24,6 +24,14 @@ Author URI:
 	margin-top: 10px;
 }
 
+#callback_wrapper .wpcf7-form-control-wrap > input,
+#callback_wrapper .wpcf7-form-control-wrap > textarea{
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.wpcf7-form-control-wrap > input,
+.wpcf7-form-control-wrap > textarea,
 #write-us-form .wpcf7-form-control-wrap > textarea,
 #write-us-form .wpcf7-form-control-wrap > input{
 	background: #333;
@@ -32,9 +40,16 @@ Author URI:
 	flex: 1
 }
 
-#write-us-form .wpcf7-form-control-wrap > textarea::placeholder
+.entry-content .wpcf7-form-control-wrap > input,
+.entry-content .wpcf7-form-control-wrap > textarea{
+	margin-bottom: 10px;
+}
+
+.wpcf7-form-control-wrap > input::placeholder,
+.wpcf7-form-control-wrap > textarea::placeholder,
+#write-us-form .wpcf7-form-control-wrap > textarea::placeholder,
 #write-us-form .wpcf7-form-control-wrap > input::placeholder{
-	color: #efefef
+	color: #a4a4a4
 }
 
 #write-us-form .form-fields{
@@ -42,21 +57,24 @@ Author URI:
 	justify-content: space-between;
 }
 
+.wpcf7-submit,
 #write-us-form .wpcf7-submit{
 	width: 100%;
 	padding: 15px;
 	display: block;
 	background: #957c62;
-	border: 0;
+	border: 1px solid transparent;
 	color: #333;
 	font-size: 18px;
-	margin-top: 25px
+	margin-top: 25px;
+	cursor: pointer;
 }
 
+.wpcf7-submit:hover,
 #write-us-form .wpcf7-submit:hover{
-	background: #957c62;
-	color: #222;
-	border-color: transparent;
+	color: #957c62;
+	background: #333;
+	border-color: #957c62;
 }
 
 .wpcf7 .ajax-loader{
@@ -387,7 +405,7 @@ li.product .price .woocommerce-Price-amount.amount{
 
 .product-view .summary p.price del .woocommerce-Price-amount.amount,
 li.product .price del .woocommerce-Price-amount.amount{
-	font-size: 18px;
+	font-size: 22px;
 	margin-right: 20px;
 	font-style: italic;
 	font-weight: lighter;
@@ -466,8 +484,13 @@ li.product .price del .woocommerce-Price-amount.amount{
 .woocommerce div.product p.stock{
 	float: left;
 	line-height: 30px;
-	margin-right: 40px;
+	margin: 0;
+	margin-right: 20px;
 	color: #957c62;
+}
+
+.woocommerce div.product p.price{
+	margin: 0;
 }
 
 .qty-label{
@@ -616,7 +639,9 @@ table.shop_table.woocommerce-checkout-review-order-table{
 }
 
 .additional-product-image img{
-	width: 100%;
+	width: 50px;
+	height: auto;
+	margin: 0;
 }
 
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
