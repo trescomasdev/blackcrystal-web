@@ -11,7 +11,7 @@
 								<a href="<?php echo get_permalink(get_option('page_sale'))?>"><i class="fa fa-tags" aria-hidden="true"></i><?php _e('Akciós termékek', 'blackcrystal')?></a>
 							</div>
 						<?php endif ?>
-						<?php if (get_locale() != 'hu_HU'):?>
+						<?php if (get_locale() == 'hu_HU'):?>
 							<em><a id="callback-btn"><i class="fa fa-phone"></i><?php _e('Kérjen Visszahívást','blackcrystal')?></a></em>
 						<?php endif;?>
 					</div>

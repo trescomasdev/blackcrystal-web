@@ -52,13 +52,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="summary entry-summary ">
 		<?php woocommerce_template_single_price() ?>
 		<?php woocommerce_template_single_add_to_cart() ?>
-		<?php woocommerce_template_single_meta() ?>		
+		<?php woocommerce_template_single_meta() ?>
 		<?php woocommerce_output_product_data_tabs()?>
 	</div><!-- .summary -->
 	<?php woocommerce_upsell_display()?>
 	<?php if (get_post_meta(get_the_ID(), '_video_id', true) != ""):?>
 		<div class="video-box box-collateral">
-			<h2><?php _e('Video', 'woocommerce')?></h2>
+			<h2 class="page-title"><?php _e('Video', 'woocommerce')?></h2>
 			<div class="box-collateral-content">
 				<div class="video">
 					<iframe src="http://www.youtube.com/embed/<?php echo get_post_meta(get_the_ID(), '_video_id', true)?>" frameborder="0" allowfullscreen=""></iframe>

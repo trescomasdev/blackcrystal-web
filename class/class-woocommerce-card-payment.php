@@ -261,14 +261,14 @@ if (class_exists("WC_Payment_Gateway")){
 							   ? $this->result_url
 							   : $this->result_test_url;
 
-			$bank_result = file_get_contents($return_url . "mid=" . $this->mid . "&txid=" . $order->id);
+			$bank_result = file_get_contents($return_url . "mid=" . $this->mid . "&txid=" . $order->get_id());
 			$status_key = substr($bank_result, 0, 3);
 			$woocommerce->cart->empty_cart();
 
 			$arr = explode(' ', $bank_result);
 
 			if ($status_key  == "ACK"){
-				wc_add_order_item_meta($order->id, 'b_accept', substr($arr[2], -6).$arr[3]);
+				wc_add_order_item_meta($order->get_id(), 'b_accept', substr($arr[2], -6).$arr[3]);
 				$order->update_status( 'completed' );
 				$order->payment_complete( $txid );
 

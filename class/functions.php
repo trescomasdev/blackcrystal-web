@@ -73,7 +73,7 @@ function show_add_price($product){
 	$prices = get_add_price($product);
 
 	if (get_option("shop_type") == "wholesale" && !is_user_logged_in()){
-		echo '<a class="havetologin" href="' . get_permalink(woocommerce_get_page_id('myaccount')) . '">'.__('Jelentkezz be az árak megtekintéséhez', 'blackcrystal').'</a>';
+		echo '<a class="havetologin" href="' . get_permalink(wc_get_page_id('myaccount')) . '">'.__('Jelentkezz be az árak megtekintéséhez', 'blackcrystal').'</a>';
 	} else {
 		if (!isset($prices['sale'])){
 			echo wc_price($prices['normal']);

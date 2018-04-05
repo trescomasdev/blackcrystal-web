@@ -202,7 +202,7 @@ button.button span:before,
 /* Global Styles ========================================================================= */
 /* Form Elements */
 input,select,textarea,button {
-  font-size: 14px;   
+  font-size: 14px;
   vertical-align:middle; color:#59595c;
 }
 input.input-text,select,textarea,
@@ -240,7 +240,6 @@ button.button {
 	padding:0;
 	margin:0;
 	width:auto;
-	font-family: 'Times New Roman';
 }
 button.button > span {
     float:left;
@@ -313,6 +312,10 @@ button.button:hover > span,
 .breadcrumbs li span {	display:inline-block;	margin:0 8px 0 6px;}
 .breadcrumbs li strong {font-weight:normal; color:#957c62; }
 
+.woocommerce div.product div.images img{
+  margin: 0
+}
+
 /* Page Heading */
 .page-title,
 .category-title {padding:0; margin:0 0 20px; }
@@ -333,6 +336,12 @@ button.button:hover > span,
 	line-height:27px;
 	color:#fff;
 	text-transform:uppercase;
+  font-family: 'Cookie', cursive;
+}
+
+h3#order_review_heading{
+  display: block;
+  clear: both;  
 }
 
 .page-title .separator { margin:0 3px; }

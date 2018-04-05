@@ -118,7 +118,7 @@ if(!class_exists('CustomWoo')) {
 		}
 
 		function thankyou_title( $title, $id ) {
-			if ( class_exists("WooCommerce") && is_order_received_page() && $id ===  woocommerce_get_page_id( 'checkout' ) ) {
+			if ( class_exists("WooCommerce") && is_order_received_page() && $id ===  wc_get_page_id( 'checkout' ) ) {
 				$title = __('Rendelés állapota','blackcrystal');
 			}
 			return $title;
@@ -245,7 +245,7 @@ if(!class_exists('CustomWoo')) {
 			    remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 			    remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 			    remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
-			    return '<a class="havetologin" href="' . get_permalink(woocommerce_get_page_id('myaccount')) . '">'.__('Jelentkezz be az árak megtekintéséhez', 'blackcrystal').'</a>';
+			    return '<a class="havetologin" href="' . get_permalink(wc_get_page_id('myaccount')) . '">'.__('Jelentkezz be az árak megtekintéséhez', 'blackcrystal').'</a>';
 		    }
 		}
 
@@ -446,9 +446,14 @@ if(!class_exists('CustomWoo')) {
 					$user_id = $shop_id . '-NOREG-' . $order_id;
 				}
 
+				$_name = $order_data['billing']['first_name'] . ' ' . $order_data['billing']['last_name'];
+
+				if ($order_data['billing']['company'] !== "")
+					$_name = $order_data['billing']['company'];
+
 				$user = array(
 					'userID' => $user_id,
-					'name'	=>	$order_data['billing']['first_name'] . ' ' . $order_data['billing']['last_name'],
+					'name'	=>	$_name,
 					'country' => $order_data['billing']['country'],
 					'region' => $order_data['billing']['region'],
 					'zip' => $order_data['billing']['postcode'],
@@ -501,8 +506,8 @@ if(!class_exists('CustomWoo')) {
 					$wpdb->insert(
 						'orders',
 						array(
-							'date' => $order->order_date,
-							'orderid' => $shop_id . "-" . $order->id,
+							'date' => $order->get_date_created(),
+							'orderid' => $shop_id . "-" . $order->get_id(),
 							'customerid' => $user['userID'],
 							'country' => $user['country'],
 							'zip' => $user['zip'],
@@ -510,7 +515,7 @@ if(!class_exists('CustomWoo')) {
 							'street' => $user['street'],
 							'currency' => $order->get_order_currency(),
 							'transportmode' => $order->get_shipping_method(),
-							'paymentmethod' => $order->payment_method_title,
+							'paymentmethod' => $order->get_payment_method_title(),
 							'comment' => $order->customer_message,
 							),
 						array(
@@ -546,7 +551,7 @@ if(!class_exists('CustomWoo')) {
 						$wpdb->insert(
 							'order_items',
 							array(
-								'orderid' => $shop_id . "-" . $order->id,
+								'orderid' => $shop_id . "-" . $order->get_id(),
 								'productcode' => $product_code,
 								'productname' => $order_item['name'],
 								'quantity' => $quantity,
@@ -574,7 +579,7 @@ if(!class_exists('CustomWoo')) {
 					$wpdb->insert(
 						'order_items',
 						array(
-							'orderid' => $shop_id . "-" . $order->id,
+							'orderid' => $shop_id . "-" . $order->get_id(),
 							'productcode' => '0001',
 							'quantity' => 1,
 							'unipricenet' =>$order->get_total_shipping(),
