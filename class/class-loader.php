@@ -38,7 +38,7 @@
 					wp_enqueue_style( 'woocommerce-layout', get_template_directory_uri() . '/css/woocommerce-layout.css', array(), false, '');
 					wp_enqueue_style( 'woocommerce-smallscreen', get_template_directory_uri() . '/css/woocommerce-smallscreen.css', array(), false, 'only screen and (max-width: 768px)');
 					wp_enqueue_style( 'swipebox.min', get_template_directory_uri() . '/css/swipebox.min.css', array(), false, '');
-
+					wp_enqueue_style( 'style', get_stylesheet_uri() );
 					//wp_enqueue_style( 'sample', get_template_directory_uri() . '/css/sample.css', array(), false, '');
 					if (PRODUCTION == "test"){
 						wp_enqueue_style( 'animate', get_template_directory_uri() . '/css/animate.css', array(), false, '');
@@ -47,7 +47,7 @@
 						wp_enqueue_style( 'grid_1170', get_template_directory_uri() . '/css/grid_1170.css', array(), false, '');
 						wp_enqueue_style( 'styles', get_template_directory_uri() . '/css/styles.css', array(), false, '');
 						wp_enqueue_style( 'extra_style', get_template_directory_uri() . '/css/extra_style.css', array(), false, '');
-						wp_enqueue_style( 'blackcrystal', get_stylesheet_uri() );
+						wp_enqueue_style( 'blackcrystal', get_template_directory_uri() . '/css/style.css', array(), false, '');
 						wp_enqueue_style( 'responsive', get_template_directory_uri() . '/css/responsive.css', array(), false, '');
 					} else {
 						wp_enqueue_style( 'animate', get_template_directory_uri() . '/css/animate.min.css', array(), false, '');
@@ -71,7 +71,7 @@
 					wp_enqueue_script( 'jquery.swipebox.min', get_template_directory_uri() . '/js/jquery.swipebox.min.js', array('jquery'), '1.0.0', true );
 					wp_enqueue_script( 'j-carousel', get_template_directory_uri() . '/js/j-carousel.js', array('jquery'), '1.0.0', true );
 					wp_enqueue_script( 'jquery.easing.1.3', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js', array('jquery'), '1.0.0', true );
-			   	wp_enqueue_script( 'superfish', get_template_directory_uri() . '/js/superfish.min.js', array('jquery'), '1.0.0', true );	
+			   	wp_enqueue_script( 'superfish', get_template_directory_uri() . '/js/superfish.min.js', array('jquery'), '1.0.0', true );
 					wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0', true );
 					if (class_exists("WooCommerce")){
 						wp_localize_script(
