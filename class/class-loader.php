@@ -40,7 +40,7 @@
 					wp_enqueue_style( 'swipebox.min', get_template_directory_uri() . '/css/swipebox.min.css', array(), false, '');
 					wp_enqueue_style( 'style', get_stylesheet_uri() );
 					//wp_enqueue_style( 'sample', get_template_directory_uri() . '/css/sample.css', array(), false, '');
-					if (PRODUCTION == "test"){
+					if (PRODUCTION == "test2"){
 						wp_enqueue_style( 'animate', get_template_directory_uri() . '/css/animate.css', array(), false, '');
 						wp_enqueue_style( 'bootstrap.modal', get_template_directory_uri() . '/css/bootstrap.css', array(), false, '');
 						wp_enqueue_style( 'superfish', get_template_directory_uri() . '/css/superfish.css', array(), false, '');
