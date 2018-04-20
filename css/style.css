@@ -1,3 +1,16 @@
+/********   RECAPTCHA    *************/
+
+.rc-anchor-logo-portrait{
+	margin: 5px 0 0 5px !important;
+}
+
+div.rc-anchor.rc-anchor-normal.rc-anchor-dark,
+.g-recaptcha,
+.g-recaptcha > div,
+.g-recaptcha > div iframe{
+	width: 100% !important;
+}
+
 
 /********   FORMS    *************/
 

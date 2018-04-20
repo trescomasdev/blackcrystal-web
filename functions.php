@@ -127,7 +127,6 @@ if(!class_exists('ThemeFramework')) {
 		      } else {
 		         $items .= '<li class=""><a href="'. get_the_permalink(wc_get_page_id('myaccount')) .'?action=login">'.__('Log in', 'blackcrystal').'</a></li>';
 		         $items .= '<li class=""><a href="'. get_the_permalink(wc_get_page_id('myaccount')) .'">'.__('Register', 'blackcrystal').'</a></li>';
-		         $items .= '<li class=""><a href="'. wp_lostpassword_url() .'">'.__('Lost Password', 'blackcrystal').'</a></li>';
 		      }
 		   }
 		   return $items;
