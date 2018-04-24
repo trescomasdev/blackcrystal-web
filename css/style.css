@@ -364,7 +364,7 @@ div.next-posts-link{
 }
 
 .page-title{
-	font-size: 24px;
+	font-size: 22px;
 	line-height: 1;
 	color: #fff;
 	padding: 0;
@@ -372,6 +372,8 @@ div.next-posts-link{
 	position: relative;
 	text-align: center;
 	display: block;
+	text-transform: uppercase;
+	font-weight: normal;
 }
 
 .lang-list > a > img{
