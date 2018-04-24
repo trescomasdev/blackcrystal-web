@@ -5,14 +5,14 @@
 				<div class="span12">
 					<div class="main">
 						<div class="breadcrumbs">
-							<?php if ( function_exists('yoast_breadcrumb') ) 
+							<?php if ( function_exists('yoast_breadcrumb') )
 {yoast_breadcrumb('<p id="breadcrumbs">','</p>');} ?>
 						</div>
 						<div class="row">
 							<div class="col-main span9">
 								<div class="padding-s">
 									<?php if (have_posts()): the_post();?>
-										<h2 class="page-title"><strong><?php the_title()?></strong></h2>									
+										<div class="page-title"><h2><?php the_title()?></h2></div>									
 										<div class="entry-content">
 											<?php the_content();?>
 										</div>
@@ -27,9 +27,9 @@
 														<img src="<?php echo $thumb[0]?>" />
 													</a>
 											  	<?php endwhile;?>
-											</div>									
+											</div>
 										<?php endif;?>
-									<?php endif;?> 
+									<?php endif;?>
 								</div>
 							</div>
 							<?php get_sidebar()?>
@@ -47,10 +47,10 @@
 
     <!-- lightgallery plugins -->
     <script src="<?php bloginfo('template_url')?>/js/lg-thumbnail.js"></script>
-    <script src="<?php bloginfo('template_url')?>/js/lg-fullscreen.js"></script>	
+    <script src="<?php bloginfo('template_url')?>/js/lg-fullscreen.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function($) {
-        $("#lightgallery").lightGallery(); 
+        $("#lightgallery").lightGallery();
     });
-</script>    
+</script>
 <?php get_footer()?>

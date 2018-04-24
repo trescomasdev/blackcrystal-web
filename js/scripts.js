@@ -158,8 +158,8 @@ jQuery(function() {
 });
 jQuery(function() {
 	jQuery('.box-collateral h2').not('.box-up-sell h2').wrapInner("<strong>");
-	jQuery('.page-title.category-title h1, .block-title strong, .box-collateral h2 strong, .box-up-sell span.line-title, .page-title strong').before("<div class='line-before'></div>");
-	jQuery('.page-title.category-title h1, .block-title strong, .box-collateral h2 strong, .box-up-sell span.line-title, .page-title strong').after("<div class='line-after'></div>");
+	jQuery('.page-title.category-title h1, .block-title strong, .box-collateral h2 strong, .box-up-sell span.line-title, .page-title h2').before("<div class='line-before'></div>");
+	jQuery('.page-title.category-title h1, .block-title strong, .box-collateral h2 strong, .box-up-sell span.line-title, .page-title h2').after("<div class='line-after'></div>");
 	jQuery(window).load(function() {
 		jQuery('.line-after').each(function() {
 			var thiswidth = (jQuery(this).parent().width() - jQuery(this).prev().width()) / 2 - 20;

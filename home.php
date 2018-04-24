@@ -5,13 +5,13 @@
 				<div class="span12">
 					<div class="main">
 						<div class="breadcrumbs">
-							<?php if ( function_exists('yoast_breadcrumb') ) 
+							<?php if ( function_exists('yoast_breadcrumb') )
 {yoast_breadcrumb('<p id="breadcrumbs">','</p>');} ?>
 						</div>
 						<div class="row">
 							<div class="col-main span9">
 								<div class="padding-s">
-									<h2 class="page-title"><strong><?php echo post_type_archive_title()?></strong></h2>							
+									<div class="page-title"><h2><?php echo post_type_archive_title()?></h2></div>							
 									<?php if (have_posts()):?>
 										<?php while (have_posts()): the_post()?>
 								            <article id="post-<?php the_ID(); ?>" <?php post_class("clearfix dekor-list-item"); ?> >
@@ -19,8 +19,8 @@
 								                <?php if (has_post_thumbnail()):?>
 									                <a class="cover-img" href="<?php the_permalink()?>">
 														<?php the_post_thumbnail('large')?>
-									                </a>	
-								                <?php endif;?>	
+									                </a>
+								                <?php endif;?>
 								                <div class="entry-content">
 								                   <?php //the_excerpt()?>
 								                </div><!-- .entry-content -->
@@ -28,7 +28,7 @@
 								                <a href="<?php the_permalink()?>" class="read-more"><?php _e("Megnézem", 'blackcrystal')?></a>
 								            </article><!-- end .entry -->
 							            <?php endwhile;?>
-										<div class="pagination clearfix">				
+										<div class="pagination clearfix">
 											<?php $args = array(
 												'base'               => '%_%',
 												'format'             => '?paged=%#%',
@@ -37,7 +37,7 @@
 												'next_text'          => __('»'),
 											); ?>
 											<?php echo paginate_links($args)?>
-										</div>							            
+										</div>
 									<?php endif; ?>
 								</div>
 							</div>

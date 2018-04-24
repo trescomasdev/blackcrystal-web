@@ -13,7 +13,7 @@
 							<div class="col-main span9">
 								<div class="padding-s">
 									<?php if (have_posts()): the_post();?>
-										<h2 class="page-title"><strong><?php the_title()?></strong></h2>
+										<div class="page-title"><h2><?php the_title()?></h2></div>
 										<div class="entry-content">
 											<?php the_content();?>
 										</div>

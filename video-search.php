@@ -6,14 +6,14 @@
 				<div class="span12">
 					<div class="main">
 						<div class="breadcrumbs">
-							<?php if ( function_exists('yoast_breadcrumb') ) 
+							<?php if ( function_exists('yoast_breadcrumb') )
 {yoast_breadcrumb('<p id="breadcrumbs">','</p>');} ?>
 						</div>
 						<div class="row">
 							<div class="col-main span9">
 								<div class="padding-s">
 									<?php if (have_posts()): the_post();?>
-										<h2 class="page-title"><strong><?php the_title()?></strong></h2>									
+										<div class="page-title"><h2><?php the_title()?></h2></div>									
 										<div class="entry-content">
 											<?php the_content();?>
 										</div>
@@ -28,8 +28,8 @@
 											    </label>
 											    <input type="submit" class="search-submit" name="sku" value="<?php _e( 'Keresés termékkód alapján', 'blackcrystal' ) ?>" />
 											    <input type="submit" class="search-submit" name="dek" value="<?php _e( 'Keresés dekor alapján', 'blackcrystal' ) ?>" />
-											</form>	    						
-										</div>										
+											</form>
+										</div>
 									<?php endif;?>
 								</div>
 							</div>
