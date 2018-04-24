@@ -364,7 +364,7 @@ div.next-posts-link{
 }
 
 .page-title{
-	font-size: 32px;
+	font-size: 24px;
 	line-height: 1;
 	color: #fff;
 	padding: 0;
@@ -372,7 +372,6 @@ div.next-posts-link{
 	position: relative;
 	text-align: center;
 	display: block;
-	font-family: 'Great Vibes', cursive;
 }
 
 .lang-list > a > img{
@@ -1135,7 +1134,7 @@ img.khlogo{
 }
 
 .gift-name{
-	font-family: 'Great Vibes', cursive;	
+	font-family: 'Great Vibes', cursive;
 	font-size: 65px;
 	line-height: 180px;
 	text-align: center;

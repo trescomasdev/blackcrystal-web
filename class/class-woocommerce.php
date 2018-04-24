@@ -177,10 +177,28 @@ if(!class_exists('CustomWoo')) {
 		}
 
 		function override_checkout_fields( $fields ) {
-		     unset($fields['billing']['billing_state']);
-		     unset($fields['shipping']['shipping_state']);
+			unset($fields['billing']['billing_state']);
+			unset($fields['shipping']['shipping_state']);
 
-		     return $fields;
+			$order = array(
+			    "billing_last_name",
+			    "billing_first_name",
+			    "billing_company",
+			    "billing_address_1",
+			    "billing_address_2",
+			    "billing_postcode",
+			    "billing_country",
+			    "billing_email",
+			    "billing_phone"
+
+			);
+			foreach($order as $field){
+			    $ordered_fields[$field] = $fields["billing"][$field];
+			}
+
+			$fields["billing"] = $ordered_fields;
+
+			return $fields;
 		}
 
 		function add_sku_in_cart( $title, $values, $cart_item_key ) {
