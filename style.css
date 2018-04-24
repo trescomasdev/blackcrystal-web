@@ -20,3 +20,7 @@ div.rc-anchor.rc-anchor-normal.rc-anchor-dark,
 	margin-right: 5px;
 	height: 80px;
 }
+
+.woocommerce-Price-amount.amount{
+	white-space: nowrap !important;
+}
