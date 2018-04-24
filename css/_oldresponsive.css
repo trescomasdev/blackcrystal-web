@@ -314,7 +314,7 @@ display: block; }
 	.box-up-sell .jcarousel-prev {top:150px;left:10px;}
 
 	.header-container-top {padding: 0; background-position: center -8px;}
-	.header-buttons {margin-bottom: 0;}
+	.header-buttons {margin-bottom: 15px;}
 	.header .header-buttons,
 	.header .links,
 	.header .links li { float:none; }
