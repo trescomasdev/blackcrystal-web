@@ -184,6 +184,7 @@ if(!class_exists('CustomWoo')) {
 			    "billing_last_name",
 			    "billing_first_name",
 			    "billing_company",
+			    "billing_city",
 			    "billing_address_1",
 			    "billing_address_2",
 			    "billing_postcode",
