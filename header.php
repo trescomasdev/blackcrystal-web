@@ -112,8 +112,9 @@
 									</ul>
 								</div>
 								<div class="header-info mobile">
-									<em><a id="callback-btn-mobile"><i class="fa fa-phone"></i><?php _e('Kérjen Visszahívást', 'theme-phrases')?></a></em>
-
+									<?php if (get_locale() == 'hu_HU'):?>
+										<em><a id="callback-btn-mobile"><i class="fa fa-phone"></i><?php _e('Kérjen Visszahívást', 'theme-phrases')?></a></em>
+									<?php endif;?>									
 								</div>
 							</div>
 						</div>
