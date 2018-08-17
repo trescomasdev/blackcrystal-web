@@ -13,7 +13,7 @@
 							<div class="col-main span9">
 								<div class="padding-s">
 									<?php if (have_posts()): the_post();?>
-										<div class="page-title"><h2><?php the_title()?></h2></div>									
+										<div class="page-title"><h2><?php the_title()?></h2></div>
 										<div class="entry-content">
 											<?php the_content();?>
 										</div>
@@ -23,7 +23,8 @@
 										<ul class="gifts-list">
 											<?php foreach ($terms as $term):?>
 												<li class="clearfix">
-													<?php taxonomy_featured_image($term->term_id)?>
+													<?php if (function_exists('z_taxonomy_image_url')) z_taxonomy_image($term->term_id); ?>
+													<?php if (function_exists('taxonomy_featured_image')) taxonomy_featured_image($term->term_id); ?>													
 													<a class="gift-name" href="<?php echo get_term_link($term)?>"><?php echo $term->name?></a>
 												</li>
 											<?php endforeach; ?>

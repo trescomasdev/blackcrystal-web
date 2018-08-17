@@ -12,23 +12,10 @@
 							<div class="col-main span9">
 								<div class="padding-s">
 									<?php if (have_posts()): the_post();?>
-										<div class="page-title"><h2><?php the_title()?></h2></div>									
+										<div class="page-title"><h2><?php the_title()?></h2></div>
 										<div class="entry-content">
 											<?php the_content();?>
 										</div>
-										<?php $gallery = new WCSlider(get_the_ID())?>
-										<?php if ($gallery->query->have_posts()):?>
-											<div id="lightgallery">
-												<?php while ($gallery->query->have_posts()): $gallery->query->the_post()?>
-													<?php $thumb = wp_get_attachment_image_src(get_the_ID(), 'large')?>
-													<?php $full = wp_get_attachment_image_src(get_the_ID(), 'full')?>
-													<a href="<?php echo $full[0]?>">
-														<span class="gallery_title"><?php the_title()?></span>
-														<img src="<?php echo $thumb[0]?>" />
-													</a>
-											  	<?php endwhile;?>
-											</div>
-										<?php endif;?>
 									<?php endif;?>
 								</div>
 							</div>
