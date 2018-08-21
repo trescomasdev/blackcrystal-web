@@ -5,7 +5,6 @@ if(!class_exists('CustomWoo')) {
 
 		public function __construct(){
 
-			add_action( 'after_setup_theme', array(&$this, 'woocommerce_support' ));
 			add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 			add_filter('loop_shop_columns', array(&$this, 'loop_columns'));
 			add_filter( 'woocommerce_product_tabs', array(&$this, 'shipping_tab' ));
@@ -111,10 +110,6 @@ if(!class_exists('CustomWoo')) {
 		        }
 		    }
 
-		}
-
-		function woocommerce_support() {
-		    add_theme_support( 'blackcrystal' );
 		}
 
 		function thankyou_title( $title, $id ) {

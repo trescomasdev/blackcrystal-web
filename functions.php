@@ -1,4 +1,18 @@
 <?php
+add_theme_support( 'woocommerce' );
+remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
+
+add_action("woocommerce_archive_description", "giftFeatured", 10, 2);
+
+function giftFeatured(){
+	$term = get_queried_object();
+	if ($term && $term->taxonomy === "product_tag"){
+		echo "<div style='padding: 20px 0'>";
+			if (function_exists('z_taxonomy_image_url')) z_taxonomy_image($term->term_id);
+			if (function_exists('taxonomy_featured_image')) taxonomy_featured_image($term->term_id);
+		echo "<div>";
+	}
+}
 
 if(!class_exists('wCore')) {
 
