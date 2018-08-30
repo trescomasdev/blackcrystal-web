@@ -50,6 +50,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	?>
 
 	<div class="summary entry-summary ">
+		<?php woocommerce_template_single_title() ?>
 		<?php woocommerce_template_single_price() ?>
 		<?php woocommerce_template_single_add_to_cart() ?>
 		<?php woocommerce_template_single_meta() ?>

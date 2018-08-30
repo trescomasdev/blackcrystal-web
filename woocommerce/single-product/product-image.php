@@ -48,6 +48,12 @@ global $post, $woocommerce, $product;
 
 			}
 		?>
+		<?php if (get_post_meta(get_the_ID(), '_gold', true) != ""):?>
+			<div class="ribbon gold"><span>Gold</span></div>
+		<?php endif; ?>
+		<?php if (get_post_meta(get_the_ID(), '_hand_decor', true) != ""):?>
+			<div class="badge hand-decor"><span>Decorated by hand</span></div>
+		<?php endif; ?>
 		<span class="sku_wrapper"><?php _e( 'SKU:', 'woocommerce' ); ?> <span class="sku" itemprop="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : __( 'N/A', 'woocommerce' ); ?></span></span>
 	</div>
 	<?php do_action( 'woocommerce_product_thumbnails' ); ?>
