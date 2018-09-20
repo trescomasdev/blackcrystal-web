@@ -92,40 +92,14 @@ function show_add_price($product){
 }
 
 /******** IMPORT Functions **********/
-function image_list($tag = '0000', $local = false, $path = ""){
-	for ($i = 1; $i <= 2; $i++) {
+function image_list($tag = '0000'){
+	$images = preg_replace('/\s+/','', $tag);
+	$images = explode(",", $images);
 
-		if ($local){
-			$url = '/images/' . $path;
-			if ($i == 1){
-				$url = $url.$tag.".jpg";
-			} else {
-				$url = $url.$tag."_".$i.".jpg";
-			}
-			if (file_exists(ABSPATH . '/wp-content/uploads/wpallimport/files' . $url)){
-				if ($i == 1){
-					echo $url;
-				} else {
-					echo ", ";
-					echo $url;
-				}
-			}
-		} else {
-			$url = 'http://blackcrystal.hu/images/' . $path;
-			if ($i == 1){
-				$url = $url.$tag.".jpg";
-			} else {
-				$url = $url.$tag."_".$i.".jpg";
-			}
-
-			if (@getimagesize($url)){
-				if ($i == 1){
-					echo $url;
-				} else {
-					echo ", ";
-					echo $url;
-				}
-			}
+	foreach ($images as $key => $value) {
+		$url = 'http://blackcrystal.hu/import/images/' . $value . '.jpg';
+		if (@getimagesize($url)){
+			echo nl2br($url . PHP_EOL);
 		}
 	}
 }
