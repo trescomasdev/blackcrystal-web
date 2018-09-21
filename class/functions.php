@@ -98,7 +98,7 @@ function image_list($tag = '0000'){
 
 	foreach ($images as $key => $value) {
 		$url = 'http://blackcrystal.hu/import/images/' . $value . '.jpg';
-		echo $url;
+		echo $url . ',';
 	}
 }
 
