@@ -35,6 +35,10 @@
 </div>
 <body <?php body_class()?>>
 	<div class="wrapper">
+		<?php
+
+			image_list("1398,1398_2");
+		?>
 		<div class="page">
 			<div class="header-container-top">
 				<div class="container">
