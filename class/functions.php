@@ -92,12 +92,12 @@ function show_add_price($product){
 }
 
 /******** IMPORT Functions **********/
-function image_list($tag = '0000'){
+function image_list($tag = '0000', $path = "images/"){
 	$images = preg_replace('/\s+/','', $tag);
 	$images = explode(",", $images);
 
 	foreach ($images as $key => $value) {
-		$url = 'http://blackcrystal.hu/import/images/' . $value;
+		$url = 'http://blackcrystal.hu/import/'. $path . $value;
 		if (@getimagesize($url))
 			echo $url . ',';
 	}
