@@ -49,7 +49,7 @@
 	</div><!-- /.modal -->
 <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'/>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <?/*************** analytics code ****************/?>
 <?php echo get_option('google_analytics')?>
 
