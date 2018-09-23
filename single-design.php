@@ -12,7 +12,7 @@
 							<div class="col-main span9">
 								<div class="padding-s">
 									<?php if (have_posts()): the_post();?>
-										<div class="page-title"><h1><?php the_title()?></h1></div>	
+										<div class="page-title"><h1><?php the_title()?></h1></div>
 						                <?php if (has_post_thumbnail()):?>
 											<?php the_post_thumbnail(array(848))?>
 						                <?php endif;?>
@@ -24,7 +24,7 @@
 										<br clear="all">
 										<div class="box-collateral box-up-sell related-carousel">
 											<h2 class="page-title"><strong><?php _e('Termékek ezzel a dekorral', 'blackcrystal')?></strong></h2>
-											<?php $products = new WP_Query(array('post_type' => 'product', 'meta_key' => '_design', 'meta_value'=> get_post_meta(get_the_ID(), '_slug', true), 'posts_per_page' => -1))?>
+											<?php $products = new WP_Query(array('post_type' => 'product', 'meta_key' => '_design', 'meta_value'=> get_post_meta(get_the_ID(), '_slug', true), 'posts_per_page' => 10))?>
 											<?php if ( $products->have_posts() ) : ?>
 												<?php woocommerce_product_loop_start(); ?>
 
