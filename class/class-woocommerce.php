@@ -11,14 +11,13 @@ if(!class_exists('CustomWoo')) {
 			add_filter( 'woocommerce_checkout_fields' , array(&$this, 'override_checkout_fields' ));
 			add_filter( 'woocommerce_general_settings', array(&$this, 'add_pricing_option_fields' ), 10, 1);
 			add_filter( 'woocommerce_payment_gateways', array(&$this, 'add_card_gateway' ));
-			add_action( 'woocommerce_thankyou', array(&$this, 'send_order'));
+			add_action( 'woocommerce_thankyou', array(&$this, 'send_order'), 10, 1);
 			add_filter( 'the_title', array($this, 'thankyou_title'), 10, 2 );
 			add_filter( 'woocommerce_cart_item_name', array($this, 'add_sku_in_cart'), 20, 3);
 			add_filter( 'woocommerce_email_recipient_customer_refunded_order', array(&$this, 'refund_email_to_admin'), 10, 2);
 
 			add_filter( 'woocommerce_ship_to_different_address_checked', '__return_false' );
 
-			add_action( 'woocommerce_thankyou', array(&$this, 'custom_woocommerce_auto_complete_paid_order'), 10, 1 );
 			add_action( 'woocommerce_remove_cart_item', array(&$this, 'remove_additional_product'), 10, 2 );
 			add_filter( 'woocommerce_get_cart_item_from_session', array(&$this, 'get_cart_items_from_session'), 1, 3 );
 			add_action(	'woocommerce_add_to_cart', array(&$this, 'add_cart_item'), 10, 6);
@@ -81,26 +80,6 @@ if(!class_exists('CustomWoo')) {
 		    }
 
 		    return $availability;
-		}
-
-		/**
-		 * AUTO COMPLETE PAID ORDERS IN WOOCOMMERCE
-		 */
-
-		function custom_woocommerce_auto_complete_paid_order( $order_id ) {
-		    if ( ! $order_id )
-		    return;
-
-		    $order = wc_get_order( $order_id );
-
-		    // No updated status for orders delivered with Bank wire, Cash on delivery and Cheque payment methods.
-		    if ( ( 'bacs' == get_post_meta($order_id, '_payment_method', true) ) || ( 'cod' == get_post_meta($order_id, '_payment_method', true) ) || ( 'cheque' == get_post_meta($order_id, '_payment_method', true) ) ) {
-		        return;
-		    }
-		    // "completed" updated status for paid Orders with all others payment methods
-		    else {
-		        $order->update_status( 'completed' );
-		    }
 		}
 
 		function minimum_order_amount() {
@@ -466,7 +445,15 @@ if(!class_exists('CustomWoo')) {
 		function send_order( $order_id ){
 			global $wpdb;
 
-			$order = new WC_Order( $order_id );
+			if ( ! $order_id )
+			return;
+
+			$order = wc_get_order( $order_id );
+
+			// No updated status for orders delivered with Bank wire, Cash on delivery and Cheque payment methods.
+			if ( ( 'bacs' == get_post_meta($order_id, '_payment_method', true) ) || ( 'cod' == get_post_meta($order_id, '_payment_method', true) ) || ( 'cheque' == get_post_meta($order_id, '_payment_method', true) ) ) {
+					$order->update_status( 'completed' );
+			}
 
 			if (!$order->has_status( 'failed' ) && !$order->has_status( 'cancelled' )){
 
