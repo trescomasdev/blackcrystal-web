@@ -161,7 +161,7 @@ if (class_exists("WC_Payment_Gateway")){
 			);
 
 			$data =  http_build_query( $payload );
-			$file =  ABSPATH . "/private_key.pem";
+			$file =  get_template_directory() . "/private_key.pem";
 			$fp = fopen($file, "r");
 
 			$priv_key = fread($fp, 8192);
