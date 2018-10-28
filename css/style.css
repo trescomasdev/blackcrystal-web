@@ -356,7 +356,7 @@ div.next-posts-link{
 }
 
 .entry-content img{
-	margin: 5px 1.5em 0;
+	margin: 5px 1% 0;
 }
 
 .entry-content img.alignnone{
@@ -1126,7 +1126,7 @@ img.khlogo{
 }
 
 .entry-content img.size-full{
-	width: 100%;
+	width: 98%;
 	height: auto;
 }
 

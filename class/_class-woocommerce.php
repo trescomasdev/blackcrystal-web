@@ -18,7 +18,7 @@ if(!class_exists('CustomWoo')) {
 
 			add_filter( 'woocommerce_ship_to_different_address_checked', '__return_false' );
 
-			add_action( 'woocommerce_thankyou', array(&$this, 'custom_woocommerce_auto_complete_paid_order'), 10, 1 );
+
 			add_action( 'woocommerce_remove_cart_item', array(&$this, 'remove_additional_product'), 10, 2 );
 			add_filter( 'woocommerce_get_cart_item_from_session', array(&$this, 'get_cart_items_from_session'), 1, 3 );
 			add_action(	'woocommerce_add_to_cart', array(&$this, 'add_cart_item'), 10, 6);
@@ -81,26 +81,6 @@ if(!class_exists('CustomWoo')) {
 		    }
 
 		    return $availability;
-		}
-
-		/**
-		 * AUTO COMPLETE PAID ORDERS IN WOOCOMMERCE
-		 */
-
-		function custom_woocommerce_auto_complete_paid_order( $order_id ) {
-		    if ( ! $order_id )
-		    return;
-
-		    $order = wc_get_order( $order_id );
-
-		    // No updated status for orders delivered with Bank wire, Cash on delivery and Cheque payment methods.
-		    if ( ( 'bacs' == get_post_meta($order_id, '_payment_method', true) ) || ( 'cod' == get_post_meta($order_id, '_payment_method', true) ) || ( 'cheque' == get_post_meta($order_id, '_payment_method', true) ) ) {
-		        return;
-		    }
-		    // "completed" updated status for paid Orders with all others payment methods
-		    else {
-		        $order->update_status( 'completed' );
-		    }
 		}
 
 		function minimum_order_amount() {
@@ -471,7 +451,6 @@ if(!class_exists('CustomWoo')) {
 			if (!$order->has_status( 'failed' ) && !$order->has_status( 'cancelled' )){
 
 				$shop_id = get_option('shop_id');
-				$test = false;
 				$order_data = $order->get_data();
 
 				if ($order->get_user_id() != 0){
@@ -488,88 +467,41 @@ if(!class_exists('CustomWoo')) {
 				$user = array(
 					'userID' => $user_id,
 					'name'	=>	$_name,
-					'country' => $order_data['billing']['country'],
-					'region' => $order_data['billing']['region'],
-					'zip' => $order_data['billing']['postcode'],
-					'city' => $order_data['billing']['city'],
-					'street' => $order_data['billing']['address_1'] . $order_data['billing']['address_2'],
-					'mailcountry' => $order_data['shipping']['country'],
-					'mailregion' => $order_data['shipping']['region'],
-					'mailzip' => $order_data['shipping']['postcode'],
-					'mailcity' => $order_data['shipping']['city'],
-					'mailstreet' => $order_data['shipping']['address_1'] . $order_data['shipping']['address_2'],
+					'billing' => array(
+						'country' => $order_data['billing']['country'],
+						'region' => $order_data['billing']['region'],
+						'zip' => $order_data['billing']['postcode'],
+						'city' => $order_data['billing']['city'],
+						'street' => $order_data['billing']['address_1'] . $order_data['billing']['address_2'],
+					),
+					'shipping' => array(
+						'country' => $order_data['shipping']['country'],
+						'region' => $order_data['shipping']['region'],
+						'zip' => $order_data['shipping']['postcode'],
+						'city' => $order_data['shipping']['city'],
+						'street' => $order_data['shipping']['address_1'] . $order_data['shipping']['address_2'],
+					),
 					'email' => $order_data['billing']['email'],
 					'phone' => $order_data['billing']['phone'],
 				);
 
-				if ($test != true){
+				$_order = array(
+					'date' => $order->get_date_created(),
+					'orderid' => $shop_id . "-" . $order->get_id(),
+					'customerid' => $user['userID'],
+					'country' => $user['country'],
+					'zip' => $user['zip'],
+					'city' => $user['city'],
+					'street' => $user['street'],
+					'currency' => $order->get_order_currency(),
+					'transportmode' => $order->get_shipping_method(),
+					'paymentmethod' => $order->get_payment_method_title(),
+					'comment' => $order->customer_message,
+				);
 
-					$wpdb->insert(
-						'customers',
-						array(
-							'userID' => $user['userID'],
-							'name' => $user['name'],
-							'country' => $user['country'],
-							'zip' => $user['zip'],
-							'city' => $user['city'],
-							'street' => $user['street'],
-							'mailcountry' => $user['mailcountry'],
-							'mailzip' => $user['mailzip'],
-							'mailcity' => $user['mailcity'],
-							'mailstreet' => $user['mailstreet'],
-							'email' => $user['email'],
-							'phone' => $user['phone'],
-						),
-						array(
-							'%s',
-							'%s',
-							'%s',
-							'%s',
-							'%s',
-							'%s',
-							'%s',
-							'%s',
-							'%s',
-							'%s',
-							'%s',
-							'%s'
-						)
+				$orderItems = array();
 
-					);
-
-					$wpdb->insert(
-						'orders',
-						array(
-							'date' => $order->get_date_created(),
-							'orderid' => $shop_id . "-" . $order->get_id(),
-							'customerid' => $user['userID'],
-							'country' => $user['country'],
-							'zip' => $user['zip'],
-							'city' => $user['city'],
-							'street' => $user['street'],
-							'currency' => $order->get_order_currency(),
-							'transportmode' => $order->get_shipping_method(),
-							'paymentmethod' => $order->get_payment_method_title(),
-							'comment' => $order->customer_message,
-							),
-						array(
-							'%s',
-							'%s',
-							'%s',
-							'%s',
-							'%s',
-							'%s',
-							'%s',
-							'%s',
-							'%s',
-							'%s',
-							'%s'
-						)
-
-					);
-				}
-
-			    $order_items = $order->get_items();
+		    $order_items = $order->get_items();
 
 				foreach ($order_items as $order_item){
 					$product = new WC_Product( $order_item['product_id'] );
@@ -581,60 +513,60 @@ if(!class_exists('CustomWoo')) {
 					$grossvalue = $order_item['line_subtotal'] + $order_item['line_subtotal_tax'];
 					$quantity = $order_item['qty'] * $ipp;
 					$product_code = get_post_meta($order_item['product_id'], '_sku', true);
-					if ($test != true){
-						$wpdb->insert(
-							'order_items',
-							array(
-								'orderid' => $shop_id . "-" . $order->get_id(),
-								'productcode' => $product_code,
-								'productname' => $order_item['name'],
-								'quantity' => $quantity,
-								'unipricenet' => round($price),
-								'netvalue' => round($order_item['line_subtotal']),
-								'grossvalue' => round($grossvalue),
-								),
-							array(
-								'%s',
-								'%s',
-								'%s',
-								'%d',
-								'%f',
-								'%f',
-								'%f',
-							)
 
-						);
-					}
-
-
-				}
-
-				if ($order->get_total_shipping() > 0 && $test != true){
-					$wpdb->insert(
-						'order_items',
-						array(
-							'orderid' => $shop_id . "-" . $order->get_id(),
-							'productcode' => '0001',
-							'quantity' => 1,
-							'unipricenet' =>$order->get_total_shipping(),
-							'netvalue' => $order->get_total_shipping(),
-							'grossvalue' => $order->get_total_shipping(),
-							),
-						array(
-							'%s',
-							'%s',
-							'%d',
-							'%f',
-							'%f',
-							'%f',
-						)
-
+					$_order_item = array(
+						'orderid' => $shop_id . "-" . $order->get_id(),
+						'productcode' => $product_code,
+						'productname' => $order_item['name'],
+						'quantity' => $quantity,
+						'unipricenet' => round($price),
+						'netvalue' => round($order_item['line_subtotal']),
+						'grossvalue' => round($grossvalue)
 					);
 
-				}
-			}
+					array_push($orderItems, $_order_item);
 
-		}
+				}
+
+				if ($order->get_total_shipping() > 0){
+					$shippingProduct = array(
+						'orderid' => $shop_id . "-" . $order->get_id(),
+						'productcode' => '0001',
+						'quantity' => 1,
+						'unipricenet' =>$order->get_total_shipping(),
+						'netvalue' => $order->get_total_shipping(),
+						'grossvalue' => $order->get_total_shipping(),
+					);
+
+					array_push($orderItems, $shippingProduct);
+				}
+
+
+				$data = json_encode(array(
+				    user => $user,
+				    order => $_order,
+						orderItems => $orderItems
+				));
+
+
+				$curl = curl_init();
+				curl_setopt_array($curl, array(
+				    CURLOPT_RETURNTRANSFER => 1,
+				    CURLOPT_URL => 'http://localhost:3000/api/new',
+				    CURLOPT_POST => 1,
+				    CURLOPT_POSTFIELDS => $data,
+				    CURLOPT_HTTPHEADER => array(
+				      'Content-Type: application/json',
+				    )
+				));
+
+				$result = curl_exec($curl);
+				var_dump($result);
+				curl_close($curl);
+				die();
+
+			}
+	}
 
 		/*
 
