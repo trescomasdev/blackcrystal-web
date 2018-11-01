@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Blackcrystal 2016\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-15 12:11+0000\n"
-"PO-Revision-Date: 2018-10-30 22:24+0000\n"
+"PO-Revision-Date: 2018-10-31 09:27+0000\n"
 "Last-Translator: Novák Zoltán <blackcrystal.office@gmail.com>\n"
 "Language-Team: Slovak\n"
 "Language: sk_SK\n"
@@ -126,7 +126,7 @@ msgstr ""
 #. Name of the template
 #: welcome.php:54 admin-templates/theme-options.php:80
 msgid "Ajándék ötletek"
-msgstr ""
+msgstr "Nápady na darčeky"
 
 #: welcome.php:62
 msgid "Featured Products"
