@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Blackcrystal 2016\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-30 21:22+0000\n"
-"PO-Revision-Date: 2018-10-30 22:26+0000\n"
-"Last-Translator: Novák Zoltán <petyaxd@gmail.com>\n"
+"PO-Revision-Date: 2018-11-06 21:03+0000\n"
+"Last-Translator: Novák Zoltán <info@blackcrystal.hu>\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -221,7 +221,7 @@ msgstr ""
 #: class/class-woocommerce.php:71
 #, php-format
 msgid "%s in stock"
-msgstr "% Auf Lager"
+msgstr "%s Auf Lager"
 
 #: class/class-woocommerce.php:116
 msgid "Rendelés állapota"
