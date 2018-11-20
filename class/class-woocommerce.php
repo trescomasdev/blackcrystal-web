@@ -450,11 +450,6 @@ if(!class_exists('CustomWoo')) {
 
 			$order = wc_get_order( $order_id );
 
-			// No updated status for orders delivered with Bank wire, Cash on delivery and Cheque payment methods.
-			if ( ( 'bacs' == get_post_meta($order_id, '_payment_method', true) ) || ( 'cod' == get_post_meta($order_id, '_payment_method', true) ) || ( 'cheque' == get_post_meta($order_id, '_payment_method', true) ) ) {
-					$order->update_status( 'completed' );
-			}
-
 			if (!$order->has_status( 'failed' ) && !$order->has_status( 'cancelled' )){
 
 				$shop_id = get_option('shop_id');
