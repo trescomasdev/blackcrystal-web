@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                 	<table border="0" cellpadding="0" cellspacing="0" width="600" id="template_header" style="background-color: #2b2b2b">
                                         <tr>
                                             <td id="header_wrapper" style="border-bottom: 3px solid #b28a60;">
-                                            	<img width="100" style="float:left; margin-right: 10px;" src="<?php echo get_template_directory_uri()?>/images/logo2.png" />
+                                            	<img width="100" style="float:left; margin-right: 10px;" src="<?php echo get_template_directory_uri()?>/images/logo.png" />
                                             	<h1 style="line-height:60px;"><?php echo $email_heading; ?></h1>
                                             </td>
                                         </tr>

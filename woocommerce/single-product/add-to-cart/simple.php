@@ -64,8 +64,8 @@ if ( ! $product->is_purchasable() ) {
 						<i class="fa fa-info" title="Kattints ide"></i>
 					</div>
 					<div class="additional-product-image">
-						<a href="http://blackcrystal.hu/import/images/1000.jpg" class="zoom">
-							<img src="http://blackcrystal.hu/import/images/1000.jpg" />
+						<a href="<?php bloginfo('template_url')?>/images/1000.jpg" class="zoom">
+							<img src="<?php bloginfo('template_url')?>/images/1000.jpg" />
 						</a>
 					</div>
 					<div class="button-box">

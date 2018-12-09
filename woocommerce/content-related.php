@@ -54,7 +54,7 @@ $classes[] = 'item';
 		<?php if (has_post_thumbnail()):?>
 			<?php the_post_thumbnail('shop_catalog')?>
 		<?php else: ?>
-			<img src="<?php echo home_url()?>/wp-content/themes/blackcrystal/images/default-no-image.png">
+			<img src="<?php bloginfo('template_url')?>/images/default-no-image.png" />
 		<?php endif;?>
 	</a>
 	<h3 class="product-name">

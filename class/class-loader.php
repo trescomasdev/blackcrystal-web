@@ -5,22 +5,8 @@
 
 		    public function __construct(){
 		    	add_action( 'wp_enqueue_scripts', array(&$this, 'front_scripts' ));
-		    	add_action( 'wp_enqueue_scripts', array(&$this, 'register_scripts' ));
 		    	add_action( 'admin_enqueue_scripts', array(&$this, 'admin_scripts' ));
 		    	add_action( 'wp_enqueue_scripts', array(&$this, 'woocommerce_scripts_cleaner'), 99 );
-		    }
-
-		    function register_scripts(){
-
-
-		    }
-
-		    function register_styles(){
-		    	//wp_register_style( $handle, $src, $deps, $ver, $media );
-		    }
-
-		    function load_core_scripts(){
-
 		    }
 
 		    function admin_scripts(){
@@ -88,7 +74,6 @@
 							)
 						);
 					}
-					wp_enqueue_script( 'camera', get_template_directory_uri() . '/js/camera.js', array('jquery'), '1.0.0', true );
 
 			   //wp_enqueue_script( 'init', get_template_directory_uri() . '/js/init.js', array('jquery'), '1.0.0', true );
 		    }

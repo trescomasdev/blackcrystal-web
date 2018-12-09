@@ -465,6 +465,10 @@ li.product .price del .woocommerce-Price-amount.amount{
 	display: none;
 }
 
+.woocommerce-product-gallery__wrapper.thumb-holder{
+	position: relative;
+}
+
 .product-image span.sku_wrapper,
 .thumb-holder span.sku_wrapper{
 	background-color: rgba(0,0,0,.8);
@@ -1059,20 +1063,10 @@ form.video-search .search-field{
 	border-bottom: 1px solid #666;
 }
 
-.span9 .products.products-grid li:nth-child(3n+1){
-	clear: both;
-}
-
 .design-products-list{
 	margin-top: 20px;
 }
 
-a.webcreatives{
-	display: block;
-	margin: 0 auto;
-	float: none;
-	text-align: center;
-}
 
 a.more-info{
 	float:none;

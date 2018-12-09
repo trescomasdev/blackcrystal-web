@@ -191,7 +191,7 @@
 .woocommerce .cart-collaterals .cart_totals,.woocommerce-page .cart-collaterals .cart_totals {
 	float:right;
 	width:48%;
-	padding: 10px;	
+	padding: 10px;
 }
 .woocommerce .cart-collaterals .cart_totals .totals-holder,.woocommerce-page .cart-collaterals .cart_totals .totals-holder{
 	border: 1px solid #957c62;
@@ -227,7 +227,7 @@
 
 .woocommerce form .form-row-first,.woocommerce form .form-row-last,.woocommerce-page form .form-row-first,.woocommerce-page form .form-row-last {
 	float:left;
-	width:47%;
+	width:100%;
 	overflow:visible;
 }
 
@@ -293,7 +293,7 @@
 	.twentyfourteen .tfwc {
 		margin-right:54px;
 	}
-	
+
 	.full-width .twentyfourteen .tfwc {
 		margin-right:auto;
 	}
@@ -326,7 +326,7 @@
 		margin-right:8.3333%;
 		padding:10%;
 	}
-	
+
 	.single-product .twentyfifteen .entry-summary {
 		padding:0!important;
 	}
@@ -357,12 +357,12 @@
 		margin-right:0;
 		margin-left:0;
 	}
-	
+
 	.no-sidebar .twentysixteen .site-main {
 		margin-right:15%;
 		margin-left:15%;
 	}
-	
+
 	.no-sidebar .twentysixteen .entry-summary {
 		margin-right:0;
 		margin-left:0;

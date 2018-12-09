@@ -8,7 +8,6 @@ if(!class_exists('CustomWoo')) {
 			add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 			add_filter('loop_shop_columns', array(&$this, 'loop_columns'));
 			add_filter( 'woocommerce_product_tabs', array(&$this, 'shipping_tab' ));
-			add_filter( 'woocommerce_checkout_fields' , array(&$this, 'override_checkout_fields' ));
 			add_filter( 'woocommerce_general_settings', array(&$this, 'add_pricing_option_fields' ), 10, 1);
 			add_filter( 'woocommerce_payment_gateways', array(&$this, 'add_card_gateway' ));
 			add_action( 'woocommerce_thankyou', array(&$this, 'send_order'), 10, 1);
@@ -168,32 +167,6 @@ if(!class_exists('CustomWoo')) {
 		function subtitle_tab_content() {
 			wc_get_template( 'single-product/tabs/subtitle.php' );
 
-		}
-
-		function override_checkout_fields( $fields ) {
-			unset($fields['billing']['billing_state']);
-			unset($fields['shipping']['shipping_state']);
-
-			$order = array(
-			    "billing_last_name",
-			    "billing_first_name",
-			    "billing_company",
-			    "billing_city",
-			    "billing_address_1",
-			    "billing_address_2",
-			    "billing_postcode",
-			    "billing_country",
-			    "billing_email",
-			    "billing_phone"
-
-			);
-			foreach($order as $field){
-			    $ordered_fields[$field] = $fields["billing"][$field];
-			}
-
-			$fields["billing"] = $ordered_fields;
-
-			return $fields;
 		}
 
 		function add_sku_in_cart( $title, $values, $cart_item_key ) {

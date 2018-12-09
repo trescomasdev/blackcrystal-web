@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="span12">
 				<div class="header">
-					<h1 class="logo"><a href="<?php echo home_url()?>" title="<?php bloginfo('name')?>" class="logo"><img width="200px" src="<?php bloginfo('template_url')?>/images/logo2.png" alt="<?php bloginfo('name')?>"/></a></h1>
+					<h1 class="logo"><a href="<?php echo home_url()?>" title="<?php bloginfo('name')?>" class="logo"><img width="200px" src="<?php bloginfo('template_url')?>/images/logo.png" alt="<?php bloginfo('name')?>"/></a></h1>
 					<div class="header-info">
 						<p class="welcome-msg"><?php echo sprintf(__("Keressen minket %s elérhetőségeinken %s vagy,", 'blackcrystal'),'<a href="'.get_permalink(get_option('page_kontakt')).'">','</a>');?></p>
 						<?php if (get_option('page_sale') > 0):?>

@@ -21,11 +21,11 @@
 	</style>
 <![endif]-->
 <!--[if lt IE 8]>
-<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url')?>/style-ie.css" media="all" />
+<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url')?>/css/style-ie.css" media="all" />
 <![endif]-->
 <!--[if lt IE 7]>
-<script type="text/javascript" src="<?php bloginfo('template_url')?>/ds-sleight.js"></script>
-<script type="text/javascript" src="<?php bloginfo('template_url')?>/ie6.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url')?>/js/ds-sleight.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url')?>/js/ie6.js"></script>
 <![endif]-->
 </head>
 <div id="callback_wrapper" class="hidden">
@@ -101,7 +101,7 @@
 										</div>
 									<?php endif */?>
 								</div>
-								<h1 class="logo mobile"><a href="<?php echo home_url()?>" title="<?php bloginfo('name')?>" class="logo test"><img width="200px" src="<?php bloginfo('template_url')?>/images/logo2.png" alt="<?php bloginfo('name')?>"/></a></h1>
+								<h1 class="logo mobile"><a href="<?php echo home_url()?>" title="<?php bloginfo('name')?>" class="logo test"><img width="200px" src="<?php bloginfo('template_url')?>/images/logo.png" alt="<?php bloginfo('name')?>"/></a></h1>
 								<div class="block-cart-header">
 									<h3><i class="fa fa-shopping-cart"></i> <?php _e('Cart', 'woocommerce')?>:</h3>
 									<?php if (class_exists("WooCommerce")) woocommerce_mini_cart()?>
